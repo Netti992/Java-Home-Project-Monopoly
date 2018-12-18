@@ -1,4 +1,5 @@
 package Fields;
 
-public class Field {
+public abstract class Field {
+    int place;
 }
