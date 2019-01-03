@@ -8,9 +8,20 @@ public class Player {
 
      int actualPlace = 0;
 
+     // amennyit dob, annyit megy előre
     public void moving(int dice) {
         actualPlace += dice;
         System.out.println("ActualPlace: " + actualPlace);
+    }
+
+    // ha a játékos pénzt kap
+    public void getMoney(int newMoney) {
+        money += newMoney;
+    }
+
+    // ha a játékos pénzt veszít
+    public void lostMoney(int lostMoney) {
+        money -= lostMoney;
     }
 }
 

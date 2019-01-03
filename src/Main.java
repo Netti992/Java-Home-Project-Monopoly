@@ -6,12 +6,13 @@ public class Main {
 
 
     public static void main(String[] args) {
-            Playing_field playing_field = new Playing_field();
+            //MonopolyGui monopolyGui = new MonopolyGui();
             Player player = new Player();
+            Playing_field playing_field = new Playing_field();
 
-            int dice = playing_field.throwing();
-            playing_field.makeThePlayingField();
-            player.moving(dice);
+            //int dice = Playing_field.throwing();
+        //System.out.println("Throwing: " + dice);
+           // player.moving(dice);
         }
         }
 
