@@ -8,7 +8,11 @@ public class Player {
 
      int actualPlace = 0;
 
-     // amennyit dob, annyit megy előre
+    public int getActualPlace() {
+        return actualPlace;
+    }
+
+    // amennyit dob, annyit megy előre
     public void moving(int dice) {
         actualPlace += dice;
         System.out.println("ActualPlace: " + actualPlace);

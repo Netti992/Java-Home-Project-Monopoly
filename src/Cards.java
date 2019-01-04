@@ -1,7 +1,8 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cards {
+public class Cards extends JLabel {
 
     ArrayList<Cards> cards = new ArrayList<Cards>();
 

@@ -4,23 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Playing_field extends JFrame {
-    Field[] playElements = new Field[15];
 
     public Playing_field() {
         setResizable(true);
-        setSize(1200, 650);
+        setSize(1200, 700);
 
         setLayout(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         getContentPane().setBackground(Color.white);
         makeThePlayingField();
+        throwing();
         repaint();
         setVisible(true);
     }
 
     // dobókocka, ami egy számot ad, ennyit kell majd lépni
-    public int throwing() {
+    public static int throwing() {
         int dice = (int) Math.floor(Math.random() * (6 - 1) + 1);
         return dice;
     }
@@ -30,13 +30,17 @@ public class Playing_field extends JFrame {
     public void makeThePlayingField() {
         Field[] playingField = new Field[30];
 
+        int i = 1;
+
         Start start = new Start(0);
         playingField[0] = start;
-
-        int i = 1;
+        this.getContentPane().add(playingField[0]);
+        playingField[0].position(0);
 
         while(i < 30) {
              int randomElement = (int) (Math.random()* (15 - 1) + 1);
+
+
 
         if (playingField[i] == null) {
 
