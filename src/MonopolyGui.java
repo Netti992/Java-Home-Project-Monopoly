@@ -1,9 +1,10 @@
-import Fields.Playing_field;
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MonopolyGui extends JFrame {
+    JFrame frame = new JFrame();
     Playing_field playing_field;
     public JButton dice;
 
@@ -19,10 +20,21 @@ public class MonopolyGui extends JFrame {
         getContentPane().setBackground(Color.white);
         this.add(playing_field);
 
-        //JButton dice = new JButton("Throw");
-        //dice.setBounds(340, 220, 90, 90);
-        //add(dice);
-        //dice.addActionListener();
+        // dobókocka gombja, ha megnyomom, dob egyet
+        JButton dice = new JButton("Throw");
+        dice.setBounds(240, 220, 90, 90);
+        frame.add(dice);
+
+        dice.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                Playing_field.throwing();
+            }
+        });
+
+        // kártyák gombja, ha a megfelelő mezőre lépek, kapok egy kártyát
+        JLabel cards = new JLabel("Cards");
+        cards.setBounds(400, 220, 90, 120);
+        frame.add(cards);
 
         this.revalidate();
         this.repaint();

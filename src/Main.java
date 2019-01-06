@@ -1,7 +1,3 @@
-import Fields.*;
-
-import javax.swing.*;
-
 public class Main {
 
 

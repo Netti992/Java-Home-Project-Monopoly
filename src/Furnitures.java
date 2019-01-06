@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+
 public class Furnitures {
+
+        ArrayList<Furnitures> furnitures = new ArrayList<Furnitures>();
 
         int couch = 5000;
         int armChair = 2000;
@@ -10,6 +14,6 @@ public class Furnitures {
         int vacumCleaner = 3000;
         int laptop = 10000;
         int cupBoard = 5000;
-
     }
+
 
