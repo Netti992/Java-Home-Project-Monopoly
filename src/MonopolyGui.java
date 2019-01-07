@@ -22,19 +22,22 @@ public class MonopolyGui extends JFrame {
 
         // dobókocka gombja, ha megnyomom, dob egyet
         JButton dice = new JButton("Throw");
-        dice.setBounds(240, 220, 90, 90);
-        frame.add(dice);
+        //dice.setBounds(240, 220, 90, 90);
+        dice.setBounds(0, 0, 90, 90);
+        dice.setVisible(true);
+        this.playing_field.add(dice);
+        getContentPane().add(dice);
 
-        dice.addMouseListener(new MouseAdapter() {
+        /*dice.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 Playing_field.throwing();
             }
-        });
+        });*/
 
         // kártyák gombja, ha a megfelelő mezőre lépek, kapok egy kártyát
         JLabel cards = new JLabel("Cards");
         cards.setBounds(400, 220, 90, 120);
-        frame.add(cards);
+        getContentPane().add(cards);
 
         this.revalidate();
         this.repaint();

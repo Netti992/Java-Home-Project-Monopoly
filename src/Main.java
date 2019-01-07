@@ -7,7 +7,7 @@ public class Main {
 
             int dice = Playing_field.throwing();
         System.out.println("Throwing: " + dice);
-           player.moving(dice);
+          player.moving(dice);
         }
         }
 

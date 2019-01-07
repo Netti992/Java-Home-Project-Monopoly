@@ -10,7 +10,7 @@ public class Playing_field extends JFrame {
         setLayout(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        getContentPane().setBackground(Color.white);
+        getContentPane().setBackground(Color.darkGray);
         makeThePlayingField();
         throwing();
         repaint();
@@ -37,8 +37,6 @@ public class Playing_field extends JFrame {
 
         while(i < 30) {
              int randomElement = (int) (Math.random()* (15 - 1) + 1);
-
-
 
         if (playingField[i] == null) {
 
@@ -117,7 +115,7 @@ public class Playing_field extends JFrame {
             playingField[i] = your_tv_burned;
             }
 
-                playingField[i].place = i;
+                playingField[i].place= i;
                 playingField[i].position(i);
 
                 this.getContentPane().add(playingField[i]);

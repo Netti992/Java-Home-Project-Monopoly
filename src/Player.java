@@ -1,6 +1,8 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
-public class Player {
+public class Player extends JLabel {
     static int money = 0;
      ArrayList<Furnitures> furnitures = new ArrayList<Furnitures>();
      static int actualPlace = 0;
@@ -9,6 +11,10 @@ public class Player {
     public void moving(int dice) {
         actualPlace += dice;
         System.out.println("ActualPlace: " + actualPlace);
+
+        JLabel Player1 = new JLabel("Player");
+        Player1.setBounds(0, 0, 20, 20);
+        add(Player1);
     }
 
     // ha a játékos pénzt kap
@@ -20,5 +26,9 @@ public class Player {
     public static void lostMoney(int lostMoney) {
         money -= lostMoney;
     }
+
+
+
+
 }
 
