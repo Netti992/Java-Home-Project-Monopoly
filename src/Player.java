@@ -10,9 +10,9 @@ public class Player extends JLabel {
     // amennyit dob, annyit megy előre
     public void moving(int dice) {
         actualPlace += dice;
+        Start.startActivity();
         this.setBounds(Playing_field.playingField[actualPlace].getX(), Playing_field.playingField[actualPlace].getY(), 40, 40);
         System.out.println("ActualPlace: " + actualPlace);
-        //Start.startActivity();
     }
 
     // ha a játékos pénzt kap

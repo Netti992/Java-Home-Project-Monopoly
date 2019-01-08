@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public abstract class Field extends JLabel{
-    int place;
+    static int place;
     int width = 90;
     int height = 90;
 
