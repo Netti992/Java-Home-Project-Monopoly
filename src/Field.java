@@ -9,6 +9,8 @@ public abstract class Field extends JLabel{
         setOpaque(true);
     }
 
+    public abstract void activityEvent();
+
     // pozíció beállítása: körben menjen a pálya
     public void position(int i) {
         if (place >= 0 && place <= 10) {

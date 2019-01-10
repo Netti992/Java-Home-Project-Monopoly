@@ -17,16 +17,170 @@ public class Playing_field extends JFrame {
 
         // játékos
         Player player = new Player();
-        player.setBackground(Color.black);
+        player.setBackground(Color.blue);
         player.setBounds(40, 20, 40, 40);
         player.setVisible(true);
         player.setOpaque(true);
         getContentPane().add(player);
 
+        // első játékos pontjai és bútorai
+        JLabel firstPlayer = new JLabel("<html><font color=black><Strong> First player &nbsp</Strong></font>" +
+                "<font color=black> First player's money: &nbsp</font>" + Player.money + "</html>");
+        Font myFont = new Font("Perpetua", Font.BOLD, 20);
+        firstPlayer.setFont(myFont);
+        firstPlayer.setBounds(250, 240, 150, 100);
+        firstPlayer.setHorizontalAlignment(JLabel.LEFT);
+        firstPlayer.setVerticalAlignment(JLabel.TOP);
+        firstPlayer.setVisible(true);
+        getContentPane().add(firstPlayer);
+
+        // bútorok
+        JButton furniture1 = new JButton();
+        furniture1.setBounds(200, 340, 40, 40);
+        furniture1.setVisible(true);
+        furniture1.setOpaque(true);
+        getContentPane().add(furniture1);
+
+        JButton furniture2 = new JButton();
+        furniture2.setBounds(245, 340, 40, 40);
+        furniture2.setVisible(true);
+        furniture2.setOpaque(true);
+        getContentPane().add(furniture2);
+
+        JButton furniture3 = new JButton();
+        furniture3.setBounds(290, 340, 40, 40);
+        furniture3.setVisible(true);
+        furniture3.setOpaque(true);
+        getContentPane().add(furniture3);
+
+        JButton furniture4 = new JButton();
+        furniture4.setBounds(335, 340, 40, 40);
+        furniture4.setVisible(true);
+        furniture4.setOpaque(true);
+        getContentPane().add(furniture4);
+
+        JButton furniture5 = new JButton();
+        furniture5.setBounds(380, 340, 40, 40);
+        furniture5.setVisible(true);
+        furniture5.setOpaque(true);
+        getContentPane().add(furniture5);
+
+        JButton furniture6 = new JButton();
+        furniture6.setBounds(200, 385, 40, 40);
+        furniture6.setVisible(true);
+        furniture6.setOpaque(true);
+        getContentPane().add(furniture6);
+
+        JButton furniture7 = new JButton();
+        furniture7.setBounds(245, 385, 40, 40);
+        furniture7.setVisible(true);
+        furniture7.setOpaque(true);
+        getContentPane().add(furniture7);
+
+        JButton furniture8 = new JButton();
+        furniture8.setBounds(290, 385, 40, 40);
+        furniture8.setVisible(true);
+        furniture8.setOpaque(true);
+        getContentPane().add(furniture8);
+
+        JButton furniture9 = new JButton();
+        furniture9.setBounds(335, 385, 40, 40);
+        furniture9.setVisible(true);
+        furniture9.setOpaque(true);
+        getContentPane().add(furniture9);
+
+        JButton furniture10 = new JButton();
+        furniture10.setBounds(380, 385, 40, 40);
+        furniture10.setVisible(true);
+        furniture10.setOpaque(true);
+        getContentPane().add(furniture10);
+
+        JButton house1 = new JButton();
+        house1.setBounds(260, 435, 100, 70);
+        house1.setVisible(true);
+        house1.setOpaque(true);
+        getContentPane().add(house1);
+
+        // második játékos pontjai és bútorai
+        JLabel secondPlayer = new JLabel("<html><font color=black><Strong> Second player &nbsp</Strong></font>" +
+                "<font color=black> Second player's money: &nbsp</font>" + Player.money + "</html>");
+        secondPlayer.setFont(myFont);
+        secondPlayer.setBounds(530, 240, 150, 100);
+        secondPlayer.setHorizontalAlignment(JLabel.LEFT);
+        secondPlayer.setVerticalAlignment(JLabel.TOP);
+        secondPlayer.setVisible(true);
+        getContentPane().add(secondPlayer);
+
+        JButton furniture11 = new JButton();
+        furniture11.setBounds(500, 340, 40, 40);
+        furniture11.setVisible(true);
+        furniture11.setOpaque(true);
+        getContentPane().add(furniture11);
+
+        JButton furniture12 = new JButton();
+        furniture12.setBounds(545, 340, 40, 40);
+        furniture12.setVisible(true);
+        furniture12.setOpaque(true);
+        getContentPane().add(furniture12);
+
+        JButton furniture13 = new JButton();
+        furniture13.setBounds(590, 340, 40, 40);
+        furniture13.setVisible(true);
+        furniture13.setOpaque(true);
+        getContentPane().add(furniture13);
+
+        JButton furniture14 = new JButton();
+        furniture14.setBounds(635, 340, 40, 40);
+        furniture14.setVisible(true);
+        furniture14.setOpaque(true);
+        getContentPane().add(furniture14);
+
+        JButton furniture15 = new JButton();
+        furniture15.setBounds(680, 340, 40, 40);
+        furniture15.setVisible(true);
+        furniture15.setOpaque(true);
+        getContentPane().add(furniture15);
+
+        JButton furniture16 = new JButton();
+        furniture16.setBounds(500, 385, 40, 40);
+        furniture16.setVisible(true);
+        furniture16.setOpaque(true);
+        getContentPane().add(furniture16);
+
+        JButton furniture17 = new JButton();
+        furniture17.setBounds(545, 385, 40, 40);
+        furniture17.setVisible(true);
+        furniture17.setOpaque(true);
+        getContentPane().add(furniture17);
+
+        JButton furniture18 = new JButton();
+        furniture18.setBounds(590, 385, 40, 40);
+        furniture18.setVisible(true);
+        furniture18.setOpaque(true);
+        getContentPane().add(furniture18);
+
+        JButton furniture19 = new JButton();
+        furniture19.setBounds(635, 385, 40, 40);
+        furniture19.setVisible(true);
+        furniture19.setOpaque(true);
+        getContentPane().add(furniture19);
+
+        JButton furniture110 = new JButton();
+        furniture110.setBounds(680, 385, 40, 40);
+        furniture110.setVisible(true);
+        furniture110.setOpaque(true);
+        getContentPane().add(furniture110);
+
+        JButton house11 = new JButton();
+        house11.setBounds(560, 435, 100, 70);
+        house11.setVisible(true);
+        house11.setOpaque(true);
+        getContentPane().add(house11);
+
         // dobókocka gombja, ha megnyomom, dob egyet
         JButton dice = new JButton("");
         dice.setIcon(new ImageIcon("./dice.png"));
-        dice.setBounds(540, 120, 80, 80);
+        dice.setBounds(830, 215, 80, 80);
         dice.setBackground(Color.darkGray);
         dice.setVisible(true);
         getContentPane().add(dice);
@@ -35,6 +189,10 @@ public class Playing_field extends JFrame {
             public void mousePressed(MouseEvent e) {
                 int dice = Playing_field.throwing();
                 player.moving(dice);
+                firstPlayer.setText("<html><font color=black><Strong> First player &nbsp</Strong></font>" +
+                        "<font color=black> First player's money: &nbsp</font>" + Player.money + "</html>");
+                secondPlayer.setText("<html><font color=black><Strong> Second player &nbsp</Strong></font>" +
+                        "<font color=black> Second player's money: &nbsp</font>" + Player.money + "</html>");
                 repaint();
             }
         });
@@ -42,7 +200,7 @@ public class Playing_field extends JFrame {
         // felirat
         JButton text = new JButton("");
         text.setIcon((new ImageIcon("./text.jpg")));
-        text.setBounds(500, 210, 160, 80);
+        text.setBounds(280, 120, 600, 80);
         text.setVisible(true);
         text.setOpaque(true);
         getContentPane().add(text);
@@ -50,29 +208,10 @@ public class Playing_field extends JFrame {
         // kártyák gombja, ha a megfelelő mezőre lépek, kiírja a kártya szövegét
         JButton cards = new JButton("");
         cards.setIcon(new ImageIcon("./card.jpg"));
-        cards.setBounds(510, 300, 140, 210);
+        cards.setBounds(800, 310, 130, 200);
         cards.setVisible(true);
         cards.setOpaque(true);
         getContentPane().add(cards);
-
-        // első játékos pontjai és bútorai
-        JLabel firstPlayer = new JLabel("First player");
-        Font myFont = new Font("Perpetua", Font.BOLD, 20);
-        firstPlayer.setFont(myFont);
-        firstPlayer.setBounds(220, 130, 150, 500);
-        firstPlayer.setHorizontalAlignment(JLabel.LEFT);
-        firstPlayer.setVerticalAlignment(JLabel.TOP);
-        firstPlayer.setVisible(true);
-        getContentPane().add(firstPlayer);
-
-        // második játékos pontjai és bútorai
-        JLabel secondPlayer = new JLabel("Second player");
-        secondPlayer.setFont(myFont);
-        secondPlayer.setBounds(720, 130, 150, 500);
-        secondPlayer.setHorizontalAlignment(JLabel.LEFT);
-        secondPlayer.setVerticalAlignment(JLabel.TOP);
-        secondPlayer.setVisible(true);
-        getContentPane().add(secondPlayer);
 
         makeThePlayingField();
         repaint();

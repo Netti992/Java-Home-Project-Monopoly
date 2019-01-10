@@ -4,16 +4,17 @@ public class Start extends Field {
         super(x);
     }
 
-public static void startActivity() {
+    public  void activityEvent() {
         // ha starton áll, 6000-t kap
-        if (Player.actualPlace == place) {
             Player.getMoney(6000);
-        }
+    }
 
+            public static void newRound() {
         // ha áthalad a starton, 4000-t kap
-        if (Player.actualPlace > 30) {
+        if (Player.actualPlace > 29) {
             Player.actualPlace -= 30;
             Player.getMoney(4000);
+            System.out.println("Money: " + Player.money);
         }
     }
-}
+    }

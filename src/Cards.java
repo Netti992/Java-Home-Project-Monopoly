@@ -18,7 +18,7 @@ public class Cards extends JLabel {
     String ten = "Születésnapod van, a családtól kaptál 1000-t!";
     String eleven = "Megbüntettek a tömegközlekedésen, mert lejárt a jegyed. Fizess 100-t!";
     String twelve = "Moziba mész este, fizess 50-t!";
-    String thirteen = ", ";
-    String fourteen = ", ";
+    String thirteen = "Gratulálok, nyertél egy konyhabútort!";
+    String fourteen = "Gratulálok, nyertél egy tv-t!";
     String fifteen = ", ";
 }
