@@ -46,6 +46,7 @@ public class Electric_shop extends Field {
         radioButton.setBounds(90, 90, 200, 40);
         electricShopFrame.add(radioButton);
         electricShopFrame.setVisible(true);
+        radioButton.setFocusable(false);
 
         radioButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -63,6 +64,7 @@ public class Electric_shop extends Field {
         tvButton.setBounds(90, 140, 200, 40);
         electricShopFrame.add(tvButton);
         electricShopFrame.setVisible(true);
+        tvButton.setFocusable(false);
 
         tvButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -80,6 +82,7 @@ public class Electric_shop extends Field {
         washingMachineButton.setBounds(90, 190, 200, 40);
         electricShopFrame.add(washingMachineButton);
         electricShopFrame.setVisible(true);
+        washingMachineButton.setFocusable(false);
 
         washingMachineButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -97,6 +100,7 @@ public class Electric_shop extends Field {
         vacuumCleanerButton.setBounds(90, 240, 200, 40);
         electricShopFrame.add(vacuumCleanerButton);
         electricShopFrame.setVisible(true);
+        vacuumCleanerButton.setFocusable(false);
 
         vacuumCleanerButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -114,6 +118,7 @@ public class Electric_shop extends Field {
         laptopButton.setBounds(90, 290, 200, 40);
         electricShopFrame.add(laptopButton);
         electricShopFrame.setVisible(true);
+        laptopButton.setFocusable(false);
 
         laptopButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {

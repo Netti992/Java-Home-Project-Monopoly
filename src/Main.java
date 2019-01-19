@@ -1,8 +1,14 @@
+import javax.swing.*;
+import java.awt.*;
+
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+
 public class Main {
 
 
     public static void main(String[] args) {
-        Playing_field playing_field = new Playing_field();
+
+        Welcome welcome = new Welcome();
 
 
         System.out.println("Computerplayer: " + Playing_field.computerPlayer.whoTurn);

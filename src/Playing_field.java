@@ -11,15 +11,25 @@ public class Playing_field extends JFrame {
     static Player computerPlayer;
     static JButton humanButton;
     static JButton computerButton;
+    public String playerName;
 
-    public Playing_field() {
+    public Playing_field(String playerName) {
+
+        this.playerName = playerName;
         setResizable(true);
         setSize(1200, 700);
+
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - getHeight()) / 2);
+        setLocation(x, y);
 
         setLayout(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         getContentPane().setBackground(Color.white);
+
+
 
         // játékos
         humanPlayer = new Player();
@@ -38,7 +48,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(computerPlayer);
 
         // első játékos pontjai és bútorai
-        humanButton = new JButton("Player");
+        humanButton = new JButton(playerName);
         if (humanPlayer.meTurn) {
             humanButton.setBackground(new Color(154,205,50));
         } else {
@@ -329,8 +339,8 @@ public class Playing_field extends JFrame {
 
         // dobókocka gombja, ha megnyomom, dob egyet
         JButton dice = new JButton("");
-        dice.setIcon(new ImageIcon("./dice.png"));
-        dice.setBounds(830, 215, 80, 80);
+        dice.setIcon(new ImageIcon("./dice.jpg"));
+        dice.setBounds(825, 220, 70, 70);
         dice.setBackground(Color.darkGray);
         dice.setVisible(true);
         getContentPane().add(dice);
@@ -370,7 +380,7 @@ public class Playing_field extends JFrame {
         // kártyák gombja, ha a megfelelő mezőre lépek, kiírja a kártya szövegét
         JButton cards = new JButton("");
         cards.setIcon(new ImageIcon("./card.jpg"));
-        cards.setBounds(800, 310, 130, 200);
+        cards.setBounds(800, 310, 120, 190);
         cards.setVisible(true);
         cards.setOpaque(true);
         getContentPane().add(cards);

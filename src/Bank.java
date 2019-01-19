@@ -37,6 +37,7 @@ public class Bank extends Field {
         JTextField textField = new JTextField();
         textField.setBounds(40, 80, 200, 40);
         bankFrame.add(textField);
+        textField.getText();
 
         JButton saveButton = new JButton("Save");
         saveButton.setBounds(50, 140, 80, 30);
