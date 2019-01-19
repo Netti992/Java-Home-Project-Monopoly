@@ -19,13 +19,14 @@ public class Electric_shop extends Field {
 
     }
 
-    public static void electric() {
+    public static void electric(Player player) {
         JDialog electricShopFrame = new JDialog();
         electricShopFrame.setSize(400, 400);
         electricShopFrame.setLayout(null);
         electricShopFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         electricShopFrame.setResizable(true);
         electricShopFrame.setBackground(Color.white);
+        Playing_field.refresh(player);
 
         // Frame magyarázata
         JLabel electricShopText = new JLabel("<html><font color=black><Strong>Itt vásárolhatsz electronikai termékeket.&nbsp</Strong></font>" +
@@ -37,6 +38,7 @@ public class Electric_shop extends Field {
         electricShopText.setVerticalAlignment(JLabel.TOP);
         electricShopText.setVisible(true);
         electricShopFrame.add(electricShopText);
+        Playing_field.refresh(player);
 
         // rádió
         JButton radioButton = new JButton();
@@ -51,6 +53,7 @@ public class Electric_shop extends Field {
                 Player.haveRadio = true;
                 electricShopFrame.dispose();
                 System.out.println(Player.haveRadio);
+                Playing_field.refresh(player);
             }
         });
 
@@ -67,6 +70,7 @@ public class Electric_shop extends Field {
                 Player.haveTv = true;
                 electricShopFrame.dispose();
                 System.out.println(Player.haveTv);
+                Playing_field.refresh(player);
             }
         });
 
@@ -83,6 +87,7 @@ public class Electric_shop extends Field {
                 Player.haveWashingMachine = true;
                 electricShopFrame.dispose();
                 System.out.println(Player.haveWashingMachine);
+                Playing_field.refresh(player);
             }
         });
 
@@ -99,6 +104,7 @@ public class Electric_shop extends Field {
                 Player.haveVacumCleaner = true;
                 electricShopFrame.dispose();
                 System.out.println(Player.haveVacumCleaner);
+                Playing_field.refresh(player);
             }
         });
 
@@ -115,6 +121,7 @@ public class Electric_shop extends Field {
                 Player.haveLaptop = true;
                 electricShopFrame.dispose();
                 System.out.println(Player.haveLaptop);
+                Playing_field.refresh(player);
             }
         });
 

@@ -5,6 +5,12 @@ import java.awt.event.MouseEvent;
 
 public class Playing_field extends JFrame {
     static Field[] playingField;
+    static JLabel humanPlayerLabel;
+    static JLabel computerPlayerLabel;
+    static Player humanPlayer;
+    static Player computerPlayer;
+    static JButton humanButton;
+    static JButton computerButton;
 
     public Playing_field() {
         setResizable(true);
@@ -16,27 +22,47 @@ public class Playing_field extends JFrame {
         getContentPane().setBackground(Color.white);
 
         // játékos
-        Player player = new Player();
-        player.setBackground(Color.blue);
-        player.setBounds(40, 20, 40, 40);
-        player.setVisible(true);
-        player.setOpaque(true);
-        getContentPane().add(player);
+        humanPlayer = new Player();
+        humanPlayer.setBackground(Color.blue);
+        humanPlayer.setBounds(40, 20, 40, 40);
+        humanPlayer.setVisible(true);
+        humanPlayer.setOpaque(true);
+        getContentPane().add(humanPlayer);
+
+        // automata játékos
+        computerPlayer = new Player();
+        computerPlayer.setBackground(Color.red);
+        computerPlayer.setBounds(40, 70, 40, 40);
+        computerPlayer.setVisible(true);
+        computerPlayer.setOpaque(true);
+        getContentPane().add(computerPlayer);
 
         // első játékos pontjai és bútorai
-        JLabel firstPlayer = new JLabel("<html><font color=black><Strong> First player &nbsp</Strong></font>" +
-                "<font color=black> First player's money: &nbsp</font>" + Player.money + "</html>");
-        Font myFont = new Font("Perpetua", Font.BOLD, 20);
-        firstPlayer.setFont(myFont);
-        firstPlayer.setBounds(250, 240, 150, 100);
-        firstPlayer.setHorizontalAlignment(JLabel.CENTER);
-        firstPlayer.setVerticalAlignment(JLabel.TOP);
-        firstPlayer.setVisible(true);
-        getContentPane().add(firstPlayer);
+        humanButton = new JButton("Player");
+        if (humanPlayer.meTurn) {
+            humanButton.setBackground(new Color(154,205,50));
+        } else {
+            humanButton.setBackground(new Color(255, 99, 71));
+        }
+        humanButton.setBounds(240, 220, 150, 50);
+        humanButton.setHorizontalAlignment(JLabel.CENTER);
+        humanButton.setVerticalAlignment(JLabel.TOP);
+        humanButton.setVisible(true);
+        getContentPane().add(humanButton);
+
+        humanPlayerLabel = new JLabel("<html><font color=black> Money: </font>" + humanPlayer.money +
+                "<br><font color=black> Loan: </font>" + humanPlayer.loan + "</html>");
+        Font myFont = new Font("Perpetua", Font.BOLD, 18);
+        humanPlayerLabel.setFont(myFont);
+        humanPlayerLabel.setBounds(240, 280, 150, 100);
+        humanPlayerLabel.setHorizontalAlignment(JLabel.CENTER);
+        humanPlayerLabel.setVerticalAlignment(JLabel.TOP);
+        humanPlayerLabel.setVisible(true);
+        getContentPane().add(humanPlayerLabel);
 
         // bútorok
         JButton laptop1 = new JButton();
-        if (!Player.haveLaptop) {
+        if (!humanPlayer.haveLaptop) {
             laptop1.setIcon(new ImageIcon("./szurkelaptop.jpg"));
         } else {
             laptop1.setIcon(new ImageIcon("./laptop.jpg"));
@@ -47,7 +73,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(laptop1);
 
         JButton vacumCleaner1 = new JButton();
-        if (!Player.haveVacumCleaner) {
+        if (!humanPlayer.haveVacumCleaner) {
             vacumCleaner1.setIcon(new ImageIcon("./szurkevacumcleaner.jpg"));
         } else {
             vacumCleaner1.setIcon(new ImageIcon("./vacumcleaner.jpg"));
@@ -58,7 +84,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(vacumCleaner1);
 
         JButton washingmachine1 = new JButton();
-        if (Player.haveWashingMachine == false) {
+        if (!humanPlayer.haveWashingMachine) {
             washingmachine1.setIcon(new ImageIcon("./szurkewashingmachine.jpg"));
         } else {
             washingmachine1.setIcon(new ImageIcon("./washingmachine.jpg"));
@@ -69,7 +95,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(washingmachine1);
 
         JButton tv1 = new JButton();
-        if (Player.haveTv == false) {
+        if (!humanPlayer.haveTv) {
             tv1.setIcon(new ImageIcon("./szurketv.jpg"));
         } else {
             tv1.setIcon(new ImageIcon("./tv.jpg"));
@@ -80,7 +106,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(tv1);
 
         JButton radio1 = new JButton();
-        if (Player.haveRadio == false) {
+        if (!humanPlayer.haveRadio) {
             radio1.setIcon(new ImageIcon("./szurkeradio.jpg"));
         } else {
             radio1.setIcon(new ImageIcon("./radio.jpg"));
@@ -91,7 +117,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(radio1);
 
         JButton cupboard1 = new JButton();
-        if (Player.haveCupBoard == false) {
+        if (!humanPlayer.haveCupBoard) {
             cupboard1.setIcon(new ImageIcon("./szurkecupboard.png"));
         } else {
             cupboard1.setIcon(new ImageIcon("./cupboard.png"));
@@ -102,7 +128,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(cupboard1);
 
         JButton bed1 = new JButton();
-        if (Player.haveBed == false) {
+        if (!humanPlayer.haveBed) {
             bed1.setIcon(new ImageIcon("./szurkebed.jpg"));
         } else {
             bed1.setIcon(new ImageIcon("./bed.jpg"));
@@ -113,7 +139,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(bed1);
 
         JButton kitchen1 = new JButton();
-        if (Player.haveKitchenFurniture == false) {
+        if (!humanPlayer.haveKitchenFurniture) {
             kitchen1.setIcon(new ImageIcon("./szurkekitchen.png"));
         } else {
             kitchen1.setIcon(new ImageIcon("./kitchen.png"));
@@ -124,7 +150,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(kitchen1);
 
         JButton armChair1 = new JButton();
-        if (Player.haveArmChair == false) {
+        if (!humanPlayer.haveArmChair) {
             armChair1.setIcon(new ImageIcon("./szurkearmchair.jpg"));
         } else {
             armChair1.setIcon(new ImageIcon("./armchair.jpg"));
@@ -135,7 +161,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(armChair1);
 
         JButton couch1 = new JButton();
-        if (Player.haveCouch == false) {
+        if (!humanPlayer.haveCouch) {
             couch1.setIcon(new ImageIcon("./szurkecouch.jpg"));
         } else {
             couch1.setIcon(new ImageIcon("./couch.jpg"));
@@ -146,7 +172,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(couch1);
 
         JButton house1 = new JButton();
-        if (Player.haveHouse == false) {
+        if (!humanPlayer.haveHouse) {
             house1.setIcon(new ImageIcon("./szurkehaz.png"));
         } else {
             house1.setIcon(new ImageIcon("./haz.png"));
@@ -157,18 +183,30 @@ public class Playing_field extends JFrame {
         getContentPane().add(house1);
 
         // második játékos pontjai és bútorai
-        JLabel secondPlayer = new JLabel("<html><font color=black><Strong> Second player &nbsp</Strong></font>" +
-                "<font color=black> Second player's money: &nbsp</font>" + Player.money + "</html>");
-        secondPlayer.setFont(myFont);
-        secondPlayer.setBounds(530, 240, 150, 100);
-        secondPlayer.setHorizontalAlignment(JLabel.CENTER);
-        secondPlayer.setVerticalAlignment(JLabel.TOP);
-        secondPlayer.setVisible(true);
-        getContentPane().add(secondPlayer);
+        computerButton = new JButton("Monopoly");
+        if (!computerPlayer.meTurn) {
+            computerButton.setBackground(new Color(154,205,50));
+        } else {
+            computerButton.setBackground(new Color(255, 99, 71));
+        }
+        computerButton.setBounds(530, 220, 150, 50);
+        computerButton.setHorizontalAlignment(JLabel.CENTER);
+        computerButton.setVerticalAlignment(JLabel.TOP);
+        computerButton.setVisible(true);
+        getContentPane().add(computerButton);
+
+        JLabel computerPlayerLabel = new JLabel("<html><font color=black> Money: </font>" + computerPlayer.money +
+                "<br><font color=black> Loan: </font>" + computerPlayer.loan + "</html>");
+        computerPlayerLabel.setFont(myFont);
+        computerPlayerLabel.setBounds(530, 280, 150, 100);
+        computerPlayerLabel.setHorizontalAlignment(JLabel.CENTER);
+        computerPlayerLabel.setVerticalAlignment(JLabel.TOP);
+        computerPlayerLabel.setVisible(true);
+        getContentPane().add(computerPlayerLabel);
 
         // bútorok
         JButton laptop2 = new JButton();
-        if (Player.haveLaptop == false) {
+        if (!computerPlayer.haveLaptop) {
             laptop2.setIcon(new ImageIcon("./szurkelaptop.jpg"));
         } else {
             laptop2.setIcon(new ImageIcon("./laptop.jpg"));
@@ -179,7 +217,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(laptop2);
 
         JButton vacumCleaner2 = new JButton();
-        if (Player.haveVacumCleaner == false) {
+        if (!computerPlayer.haveVacumCleaner) {
             vacumCleaner2.setIcon(new ImageIcon("./szurkevacumcleaner.jpg"));
         } else {
             vacumCleaner2.setIcon(new ImageIcon("./vacumcleaner.jpg"));
@@ -190,7 +228,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(vacumCleaner2);
 
         JButton washingmachine2 = new JButton();
-        if (Player.haveWashingMachine == false) {
+        if (!computerPlayer.haveWashingMachine) {
             washingmachine2.setIcon(new ImageIcon("./szurkewashingmachine.jpg"));
         } else {
             washingmachine2.setIcon(new ImageIcon("./washingmachine.jpg"));
@@ -201,7 +239,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(washingmachine2);
 
         JButton tv2 = new JButton();
-        if (Player.haveTv == false) {
+        if (!computerPlayer.haveTv) {
             tv2.setIcon(new ImageIcon("./szurketv.jpg"));
         } else {
             tv2.setIcon(new ImageIcon("./tv.jpg"));
@@ -212,7 +250,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(tv2);
 
         JButton radio2 = new JButton();
-        if (!Player.haveRadio) {
+        if (!computerPlayer.haveRadio) {
             radio2.setIcon(new ImageIcon("./szurkeradio.jpg"));
         } else {
             radio2.setIcon(new ImageIcon("./radio.jpg"));
@@ -223,7 +261,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(radio2);
 
         JButton cupboard2 = new JButton();
-        if (Player.haveCupBoard == false) {
+        if (!computerPlayer.haveCupBoard) {
             cupboard2.setIcon(new ImageIcon("./szurkecupboard.png"));
         } else {
             cupboard2.setIcon(new ImageIcon("./cupboard.png"));
@@ -234,7 +272,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(cupboard2);
 
         JButton bed2 = new JButton();
-        if (Player.haveBed == false) {
+        if (!computerPlayer.haveBed) {
             bed2.setIcon(new ImageIcon("./szurkebed.jpg"));
         } else {
             bed2.setIcon(new ImageIcon("./bed.jpg"));
@@ -245,7 +283,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(bed2);
 
         JButton kitchen2 = new JButton();
-        if (Player.haveKitchenFurniture == false) {
+        if (!computerPlayer.haveKitchenFurniture) {
             kitchen2.setIcon(new ImageIcon("./szurkekitchen.png"));
         } else {
             kitchen2.setIcon(new ImageIcon("./kitchen.png"));
@@ -256,7 +294,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(kitchen2);
 
         JButton armChair2 = new JButton();
-        if (Player.haveArmChair == false) {
+        if (!computerPlayer.haveArmChair) {
             armChair2.setIcon(new ImageIcon("./szurkearmchair.jpg"));
         } else {
             armChair2.setIcon(new ImageIcon("./armchair.jpg"));
@@ -267,7 +305,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(armChair2);
 
         JButton couch2 = new JButton();
-        if (Player.haveCouch == false) {
+        if (!computerPlayer.haveCouch) {
             couch2.setIcon(new ImageIcon("./szurkecouch.jpg"));
         } else {
             couch2.setIcon(new ImageIcon("./couch.jpg"));
@@ -279,7 +317,7 @@ public class Playing_field extends JFrame {
 
 
         JButton house2 = new JButton();
-        if (Player.haveHouse == false) {
+        if (!computerPlayer.haveHouse) {
             house2.setIcon(new ImageIcon("./szurkehaz.png"));
         } else {
             house2.setIcon(new ImageIcon("./haz.png"));
@@ -297,23 +335,34 @@ public class Playing_field extends JFrame {
         dice.setVisible(true);
         getContentPane().add(dice);
 
+        // mindig az dob, akinek a meTurn true, a whoTurn-ből elvesz, vagy kivon
         dice.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                int dice = Playing_field.throwing();
-                player.moving(dice);
-                System.out.println(Player.money);
-                firstPlayer.setText("<html><font color=black><Strong> First player &nbsp</Strong></font>" +
-                        "<font color=black> First player's money: &nbsp</font>" + Player.money + "</html>");
-                secondPlayer.setText("<html><font color=black><Strong> Second player &nbsp</Strong></font>" +
-                        "<font color=black> Second player's money: &nbsp</font>" + Player.money + "</html>");
-                repaint();
+              //  if (humanPlayer.meTurn) {
+                    int dice = Playing_field.throwing();
+                    humanPlayer.moving(dice, humanPlayer);
+              //      humanPlayer.whoTurn += 1;
+              //      computerPlayer.whoTurn -= 1;
+              //      humanPlayer.nextPlayer(humanPlayer);
+                    refresh(humanPlayer);
+                    repaint();
+              //  }
+                /*if (computerPlayer.meTurn) {
+                    int dice = Playing_field.throwing();
+                    computerPlayer.moving(dice, computerPlayer);
+                    computerPlayer.whoTurn += 1;
+                    humanPlayer.whoTurn -= 1;
+                    computerPlayer.nextPlayer(computerPlayer);
+                    refresh(computerPlayer);
+                    repaint();
+                }*/
             }
         });
 
         // felirat
         JButton text = new JButton("");
         text.setIcon((new ImageIcon("./text.jpg")));
-        text.setBounds(280, 120, 600, 80);
+        text.setBounds(335, 120, 500, 80);
         text.setVisible(true);
         text.setOpaque(true);
         getContentPane().add(text);
@@ -331,6 +380,7 @@ public class Playing_field extends JFrame {
         setVisible(true);
     }
 
+
     // dobókocka, ami egy számot ad, ennyit kell majd lépni
     public static int throwing() {
         int dice = (int) Math.floor(Math.random() * (6 - 1) + 1);
@@ -347,6 +397,7 @@ public class Playing_field extends JFrame {
 
         Start start = new Start(0);
         playingField[0] = start;
+        start.setIcon(new ImageIcon("./start.jpg"));
         this.getContentPane().add(playingField[0]);
         playingField[0].position(0);
 
@@ -357,76 +408,91 @@ public class Playing_field extends JFrame {
 
             if (randomElement == 1) {
             Bank bank = new Bank(0);
+            bank.setIcon(new ImageIcon("./bank.jpg"));
             playingField[i] = bank;
             }
 
             else if (randomElement == 2) {
             Electric_shop electric_shop = new Electric_shop(0);
+            electric_shop.setIcon(new ImageIcon("./electric.jpg"));
             playingField[i] = electric_shop;
             }
 
             else if (randomElement == 3) {
             Furnosher furnosher = new Furnosher(0);
+            furnosher.setIcon(new ImageIcon("./furnitures.jpg"));
             playingField[i] = furnosher;
             }
 
             else if (randomElement == 4) {
             Hospital hospital = new Hospital(0);
+            hospital.setIcon(new ImageIcon("./hospital.jpg"));
             playingField[i] = hospital;
             }
 
             else if (randomElement == 5) {
             Insurer insurer = new Insurer(0);
+            insurer.setIcon(new ImageIcon("./insurer.png"));
             playingField[i] = insurer;
             }
 
             else if (randomElement == 6) {
             Lottery lottery = new Lottery(0);
+            lottery.setIcon(new ImageIcon("./lottery.jpg"));
             playingField[i] = lottery;
             }
 
             else if (randomElement == 7) {
             Prison prison = new Prison(0);
+            prison.setIcon(new ImageIcon("./prison.jpg"));
             playingField[i] = prison;
             }
 
             else if (randomElement == 8) {
             Real_estate_agency real_estate_agency = new Real_estate_agency(0);
+            real_estate_agency.setIcon(new ImageIcon("./agency.jpg"));
             playingField[i] = real_estate_agency;
             }
 
             else if (randomElement == 9) {
             Sweep sweep = new Sweep(0);
+            sweep.setIcon(new ImageIcon("./sweep.jpg"));
             playingField[i] = sweep;
             }
 
             else if (randomElement == 10) {
             Trolley trolley = new Trolley(0);
+            trolley.setIcon(new ImageIcon("./trolley.jpg"));
             playingField[i] = trolley;
             }
 
             else if (randomElement == 11) {
             Vacation vacation = new Vacation(0);
+            vacation.setIcon(new ImageIcon("./vacation.jpg"));
             playingField[i] = vacation;
             }
 
             else if (randomElement == 12) {
             Work work = new Work(0);
+            work.setIcon(new ImageIcon("./work.jpg"));
             playingField[i] = work;
             }
 
             else if (randomElement == 13) {
             Wrong_washing_machine wrong_washing_machine = new Wrong_washing_machine(0);
+            wrong_washing_machine.setIcon(new ImageIcon("./washing.jpg"));
             playingField[i] = wrong_washing_machine;
             }
 
             else if (randomElement == 14) {
             You_lettered you_lettered = new You_lettered(0);
+            you_lettered.setIcon(new ImageIcon("./litter.jpg"));
             playingField[i] = you_lettered;
             }
 
             else if (randomElement == 15) {
             Your_tv_burned your_tv_burned = new Your_tv_burned(0);
+            your_tv_burned.setIcon(new ImageIcon("./burning.png"));
             playingField[i] = your_tv_burned;
             }
 
@@ -442,4 +508,12 @@ public class Playing_field extends JFrame {
           }
         }
     }
+
+    public  static void refresh(Player player) {
+        humanPlayerLabel.setText("<html><font color=black> Money: </font>" + Player.money +
+                "<br><font color=black> Loan: </font>" + Player.loan + "</html>");
+        computerPlayerLabel.setText("<font color=black> Money: </font>" + Player.money +
+                "<br><font color=black> Loan: </font>" + Player.loan + "</html>");
+    }
 }
+

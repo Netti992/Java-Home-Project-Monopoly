@@ -6,8 +6,10 @@ public class Player extends JLabel {
     static boolean haveHouse = false;
 
     static int money = 0;
-    static int loan = 100;
+    static int loan = 0;
     static int actualPlace = 0;
+    static int whoTurn = 0;
+    static boolean meTurn;
 
     static boolean haveCouch = false;
     static boolean haveArmChair = false;
@@ -22,9 +24,13 @@ public class Player extends JLabel {
 
     static boolean haveLoan = false;
 
+    public Player() {
+
+    }
+
 
     // amennyit dob, annyit megy előre
-    public void moving(int dice) {
+    public void moving(int dice, Player player) {
         actualPlace += 1;
 
         Start.newRound();
@@ -33,10 +39,9 @@ public class Player extends JLabel {
             //Playing_field.playingField[actualPlace].activityEvent();
 
         //Bank.bankEvent();
-        Electric_shop.electric();
+        Electric_shop.electric(this);
         //Furnosher.furnosher();
         //Real_estate_agency.realEstateEvent();
-
         System.out.println("ActualPlace: " + actualPlace);
     }
 
@@ -65,8 +70,12 @@ public class Player extends JLabel {
         }
     }
 
-
-
-
+    //
+    public static void nextPlayer(Player player) {
+        if (player.whoTurn == 0) {
+            player.meTurn = true;
+        }
+        else player.meTurn = false;
+    }
 }
 
