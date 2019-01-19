@@ -6,6 +6,7 @@ public class Main {
 
             int dice = Playing_field.throwing();
         System.out.println("Throwing: " + dice);
+        Bank.bankEvent();
         }
         }
 

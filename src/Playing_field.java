@@ -29,73 +29,128 @@ public class Playing_field extends JFrame {
         Font myFont = new Font("Perpetua", Font.BOLD, 20);
         firstPlayer.setFont(myFont);
         firstPlayer.setBounds(250, 240, 150, 100);
-        firstPlayer.setHorizontalAlignment(JLabel.LEFT);
+        firstPlayer.setHorizontalAlignment(JLabel.CENTER);
         firstPlayer.setVerticalAlignment(JLabel.TOP);
         firstPlayer.setVisible(true);
         getContentPane().add(firstPlayer);
 
         // bútorok
-        JButton furniture1 = new JButton();
-        furniture1.setBounds(200, 340, 40, 40);
-        furniture1.setVisible(true);
-        furniture1.setOpaque(true);
-        getContentPane().add(furniture1);
+        JButton laptop1 = new JButton();
+        if (!Player.haveLaptop) {
+            laptop1.setIcon(new ImageIcon("./szurkelaptop.jpg"));
+        } else {
+            laptop1.setIcon(new ImageIcon("./laptop.jpg"));
+        }
+        laptop1.setBounds(200, 340, 40, 40);
+        laptop1.setVisible(true);
+        laptop1.setOpaque(true);
+        getContentPane().add(laptop1);
 
-        JButton furniture2 = new JButton();
-        furniture2.setBounds(245, 340, 40, 40);
-        furniture2.setVisible(true);
-        furniture2.setOpaque(true);
-        getContentPane().add(furniture2);
+        JButton vacumCleaner1 = new JButton();
+        if (!Player.haveVacumCleaner) {
+            vacumCleaner1.setIcon(new ImageIcon("./szurkevacumcleaner.jpg"));
+        } else {
+            vacumCleaner1.setIcon(new ImageIcon("./vacumcleaner.jpg"));
+        }
+        vacumCleaner1.setBounds(245, 340, 40, 40);
+        vacumCleaner1.setVisible(true);
+        vacumCleaner1.setOpaque(true);
+        getContentPane().add(vacumCleaner1);
 
-        JButton furniture3 = new JButton();
-        furniture3.setBounds(290, 340, 40, 40);
-        furniture3.setVisible(true);
-        furniture3.setOpaque(true);
-        getContentPane().add(furniture3);
+        JButton washingmachine1 = new JButton();
+        if (Player.haveWashingMachine == false) {
+            washingmachine1.setIcon(new ImageIcon("./szurkewashingmachine.jpg"));
+        } else {
+            washingmachine1.setIcon(new ImageIcon("./washingmachine.jpg"));
+        }
+        washingmachine1.setBounds(290, 340, 40, 40);
+        washingmachine1.setVisible(true);
+        washingmachine1.setOpaque(true);
+        getContentPane().add(washingmachine1);
 
-        JButton furniture4 = new JButton();
-        furniture4.setBounds(335, 340, 40, 40);
-        furniture4.setVisible(true);
-        furniture4.setOpaque(true);
-        getContentPane().add(furniture4);
+        JButton tv1 = new JButton();
+        if (Player.haveTv == false) {
+            tv1.setIcon(new ImageIcon("./szurketv.jpg"));
+        } else {
+            tv1.setIcon(new ImageIcon("./tv.jpg"));
+        }
+        tv1.setBounds(335, 340, 40, 40);
+        tv1.setVisible(true);
+        tv1.setOpaque(true);
+        getContentPane().add(tv1);
 
-        JButton furniture5 = new JButton();
-        furniture5.setBounds(380, 340, 40, 40);
-        furniture5.setVisible(true);
-        furniture5.setOpaque(true);
-        getContentPane().add(furniture5);
+        JButton radio1 = new JButton();
+        if (Player.haveRadio == false) {
+            radio1.setIcon(new ImageIcon("./szurkeradio.jpg"));
+        } else {
+            radio1.setIcon(new ImageIcon("./radio.jpg"));
+        }
+        radio1.setBounds(380, 340, 40, 40);
+        radio1.setVisible(true);
+        radio1.setOpaque(true);
+        getContentPane().add(radio1);
 
-        JButton furniture6 = new JButton();
-        furniture6.setBounds(200, 385, 40, 40);
-        furniture6.setVisible(true);
-        furniture6.setOpaque(true);
-        getContentPane().add(furniture6);
+        JButton cupboard1 = new JButton();
+        if (Player.haveCupBoard == false) {
+            cupboard1.setIcon(new ImageIcon("./szurkecupboard.png"));
+        } else {
+            cupboard1.setIcon(new ImageIcon("./cupboard.png"));
+        }
+        cupboard1.setBounds(200, 385, 40, 40);
+        cupboard1.setVisible(true);
+        cupboard1.setOpaque(true);
+        getContentPane().add(cupboard1);
 
-        JButton furniture7 = new JButton();
-        furniture7.setBounds(245, 385, 40, 40);
-        furniture7.setVisible(true);
-        furniture7.setOpaque(true);
-        getContentPane().add(furniture7);
+        JButton bed1 = new JButton();
+        if (Player.haveBed == false) {
+            bed1.setIcon(new ImageIcon("./szurkebed.jpg"));
+        } else {
+            bed1.setIcon(new ImageIcon("./bed.jpg"));
+        }
+        bed1.setBounds(245, 385, 40, 40);
+        bed1.setVisible(true);
+        bed1.setOpaque(true);
+        getContentPane().add(bed1);
 
-        JButton furniture8 = new JButton();
-        furniture8.setBounds(290, 385, 40, 40);
-        furniture8.setVisible(true);
-        furniture8.setOpaque(true);
-        getContentPane().add(furniture8);
+        JButton kitchen1 = new JButton();
+        if (Player.haveKitchenFurniture == false) {
+            kitchen1.setIcon(new ImageIcon("./szurkekitchen.png"));
+        } else {
+            kitchen1.setIcon(new ImageIcon("./kitchen.png"));
+        }
+        kitchen1.setBounds(290, 385, 40, 40);
+        kitchen1.setVisible(true);
+        kitchen1.setOpaque(true);
+        getContentPane().add(kitchen1);
 
-        JButton furniture9 = new JButton();
-        furniture9.setBounds(335, 385, 40, 40);
-        furniture9.setVisible(true);
-        furniture9.setOpaque(true);
-        getContentPane().add(furniture9);
+        JButton armChair1 = new JButton();
+        if (Player.haveArmChair == false) {
+            armChair1.setIcon(new ImageIcon("./szurkearmchair.jpg"));
+        } else {
+            armChair1.setIcon(new ImageIcon("./armchair.jpg"));
+        }
+        armChair1.setBounds(335, 385, 40, 40);
+        armChair1.setVisible(true);
+        armChair1.setOpaque(true);
+        getContentPane().add(armChair1);
 
-        JButton furniture10 = new JButton();
-        furniture10.setBounds(380, 385, 40, 40);
-        furniture10.setVisible(true);
-        furniture10.setOpaque(true);
-        getContentPane().add(furniture10);
+        JButton couch1 = new JButton();
+        if (Player.haveCouch == false) {
+            couch1.setIcon(new ImageIcon("./szurkecouch.jpg"));
+        } else {
+            couch1.setIcon(new ImageIcon("./couch.jpg"));
+        }
+        couch1.setBounds(380, 385, 40, 40);
+        couch1.setVisible(true);
+        couch1.setOpaque(true);
+        getContentPane().add(couch1);
 
         JButton house1 = new JButton();
+        if (Player.haveHouse == false) {
+            house1.setIcon(new ImageIcon("./szurkehaz.png"));
+        } else {
+            house1.setIcon(new ImageIcon("./haz.png"));
+        }
         house1.setBounds(260, 435, 100, 70);
         house1.setVisible(true);
         house1.setOpaque(true);
@@ -106,76 +161,133 @@ public class Playing_field extends JFrame {
                 "<font color=black> Second player's money: &nbsp</font>" + Player.money + "</html>");
         secondPlayer.setFont(myFont);
         secondPlayer.setBounds(530, 240, 150, 100);
-        secondPlayer.setHorizontalAlignment(JLabel.LEFT);
+        secondPlayer.setHorizontalAlignment(JLabel.CENTER);
         secondPlayer.setVerticalAlignment(JLabel.TOP);
         secondPlayer.setVisible(true);
         getContentPane().add(secondPlayer);
 
-        JButton furniture11 = new JButton();
-        furniture11.setBounds(500, 340, 40, 40);
-        furniture11.setVisible(true);
-        furniture11.setOpaque(true);
-        getContentPane().add(furniture11);
+        // bútorok
+        JButton laptop2 = new JButton();
+        if (Player.haveLaptop == false) {
+            laptop2.setIcon(new ImageIcon("./szurkelaptop.jpg"));
+        } else {
+            laptop2.setIcon(new ImageIcon("./laptop.jpg"));
+        }
+        laptop2.setBounds(500, 340, 40, 40);
+        laptop2.setVisible(true);
+        laptop2.setOpaque(true);
+        getContentPane().add(laptop2);
 
-        JButton furniture12 = new JButton();
-        furniture12.setBounds(545, 340, 40, 40);
-        furniture12.setVisible(true);
-        furniture12.setOpaque(true);
-        getContentPane().add(furniture12);
+        JButton vacumCleaner2 = new JButton();
+        if (Player.haveVacumCleaner == false) {
+            vacumCleaner2.setIcon(new ImageIcon("./szurkevacumcleaner.jpg"));
+        } else {
+            vacumCleaner2.setIcon(new ImageIcon("./vacumcleaner.jpg"));
+        }
+        vacumCleaner2.setBounds(545, 340, 40, 40);
+        vacumCleaner2.setVisible(true);
+        vacumCleaner2.setOpaque(true);
+        getContentPane().add(vacumCleaner2);
 
-        JButton furniture13 = new JButton();
-        furniture13.setBounds(590, 340, 40, 40);
-        furniture13.setVisible(true);
-        furniture13.setOpaque(true);
-        getContentPane().add(furniture13);
+        JButton washingmachine2 = new JButton();
+        if (Player.haveWashingMachine == false) {
+            washingmachine2.setIcon(new ImageIcon("./szurkewashingmachine.jpg"));
+        } else {
+            washingmachine2.setIcon(new ImageIcon("./washingmachine.jpg"));
+        }
+        washingmachine2.setBounds(590, 340, 40, 40);
+        washingmachine2.setVisible(true);
+        washingmachine2.setOpaque(true);
+        getContentPane().add(washingmachine2);
 
-        JButton furniture14 = new JButton();
-        furniture14.setBounds(635, 340, 40, 40);
-        furniture14.setVisible(true);
-        furniture14.setOpaque(true);
-        getContentPane().add(furniture14);
+        JButton tv2 = new JButton();
+        if (Player.haveTv == false) {
+            tv2.setIcon(new ImageIcon("./szurketv.jpg"));
+        } else {
+            tv2.setIcon(new ImageIcon("./tv.jpg"));
+        }
+        tv2.setBounds(635, 340, 40, 40);
+        tv2.setVisible(true);
+        tv2.setOpaque(true);
+        getContentPane().add(tv2);
 
-        JButton furniture15 = new JButton();
-        furniture15.setBounds(680, 340, 40, 40);
-        furniture15.setVisible(true);
-        furniture15.setOpaque(true);
-        getContentPane().add(furniture15);
+        JButton radio2 = new JButton();
+        if (!Player.haveRadio) {
+            radio2.setIcon(new ImageIcon("./szurkeradio.jpg"));
+        } else {
+            radio2.setIcon(new ImageIcon("./radio.jpg"));
+        }
+        radio2.setBounds(680, 340, 40, 40);
+        radio2.setVisible(true);
+        radio2.setOpaque(true);
+        getContentPane().add(radio2);
 
-        JButton furniture16 = new JButton();
-        furniture16.setBounds(500, 385, 40, 40);
-        furniture16.setVisible(true);
-        furniture16.setOpaque(true);
-        getContentPane().add(furniture16);
+        JButton cupboard2 = new JButton();
+        if (Player.haveCupBoard == false) {
+            cupboard2.setIcon(new ImageIcon("./szurkecupboard.png"));
+        } else {
+            cupboard2.setIcon(new ImageIcon("./cupboard.png"));
+        }
+        cupboard2.setBounds(500, 385, 40, 40);
+        cupboard2.setVisible(true);
+        cupboard2.setOpaque(true);
+        getContentPane().add(cupboard2);
 
-        JButton furniture17 = new JButton();
-        furniture17.setBounds(545, 385, 40, 40);
-        furniture17.setVisible(true);
-        furniture17.setOpaque(true);
-        getContentPane().add(furniture17);
+        JButton bed2 = new JButton();
+        if (Player.haveBed == false) {
+            bed2.setIcon(new ImageIcon("./szurkebed.jpg"));
+        } else {
+            bed2.setIcon(new ImageIcon("./bed.jpg"));
+        }
+        bed2.setBounds(545, 385, 40, 40);
+        bed2.setVisible(true);
+        bed2.setOpaque(true);
+        getContentPane().add(bed2);
 
-        JButton furniture18 = new JButton();
-        furniture18.setBounds(590, 385, 40, 40);
-        furniture18.setVisible(true);
-        furniture18.setOpaque(true);
-        getContentPane().add(furniture18);
+        JButton kitchen2 = new JButton();
+        if (Player.haveKitchenFurniture == false) {
+            kitchen2.setIcon(new ImageIcon("./szurkekitchen.png"));
+        } else {
+            kitchen2.setIcon(new ImageIcon("./kitchen.png"));
+        }
+        kitchen2.setBounds(590, 385, 40, 40);
+        kitchen2.setVisible(true);
+        kitchen2.setOpaque(true);
+        getContentPane().add(kitchen2);
 
-        JButton furniture19 = new JButton();
-        furniture19.setBounds(635, 385, 40, 40);
-        furniture19.setVisible(true);
-        furniture19.setOpaque(true);
-        getContentPane().add(furniture19);
+        JButton armChair2 = new JButton();
+        if (Player.haveArmChair == false) {
+            armChair2.setIcon(new ImageIcon("./szurkearmchair.jpg"));
+        } else {
+            armChair2.setIcon(new ImageIcon("./armchair.jpg"));
+        }
+        armChair2.setBounds(635, 385, 40, 40);
+        armChair2.setVisible(true);
+        armChair2.setOpaque(true);
+        getContentPane().add(armChair2);
 
-        JButton furniture110 = new JButton();
-        furniture110.setBounds(680, 385, 40, 40);
-        furniture110.setVisible(true);
-        furniture110.setOpaque(true);
-        getContentPane().add(furniture110);
+        JButton couch2 = new JButton();
+        if (Player.haveCouch == false) {
+            couch2.setIcon(new ImageIcon("./szurkecouch.jpg"));
+        } else {
+            couch2.setIcon(new ImageIcon("./couch.jpg"));
+        }
+        couch2.setBounds(680, 385, 40, 40);
+        couch2.setVisible(true);
+        couch2.setOpaque(true);
+        getContentPane().add(couch2);
 
-        JButton house11 = new JButton();
-        house11.setBounds(560, 435, 100, 70);
-        house11.setVisible(true);
-        house11.setOpaque(true);
-        getContentPane().add(house11);
+
+        JButton house2 = new JButton();
+        if (Player.haveHouse == false) {
+            house2.setIcon(new ImageIcon("./szurkehaz.png"));
+        } else {
+            house2.setIcon(new ImageIcon("./haz.png"));
+        }
+        house2.setBounds(560, 435, 100, 70);
+        house2.setVisible(true);
+        house2.setOpaque(true);
+        getContentPane().add(house2);
 
         // dobókocka gombja, ha megnyomom, dob egyet
         JButton dice = new JButton("");
@@ -189,6 +301,7 @@ public class Playing_field extends JFrame {
             public void mousePressed(MouseEvent e) {
                 int dice = Playing_field.throwing();
                 player.moving(dice);
+                System.out.println(Player.money);
                 firstPlayer.setText("<html><font color=black><Strong> First player &nbsp</Strong></font>" +
                         "<font color=black> First player's money: &nbsp</font>" + Player.money + "</html>");
                 secondPlayer.setText("<html><font color=black><Strong> Second player &nbsp</Strong></font>" +

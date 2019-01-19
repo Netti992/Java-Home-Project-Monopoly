@@ -10,11 +10,12 @@ public class Start extends Field {
     }
 
             public static void newRound() {
-        // ha áthalad a starton, 4000-t kap
+        // ha áthalad a starton, 4000-t kap, a kölcsön 5%-t fizeti
         if (Player.actualPlace > 29) {
             Player.actualPlace -= 30;
             Player.getMoney(4000);
             System.out.println("Money: " + Player.money);
+            Player.payLoan();
         }
     }
     }
