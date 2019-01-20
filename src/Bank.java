@@ -39,23 +39,45 @@ public class Bank extends Field {
         bankFrame.add(textField);
         textField.getText();
 
-        JButton saveButton = new JButton("Save");
+        String loanStringMoney = textField.getText();
+        int loanMoney = Integer.parseInt(loanStringMoney);
+
+        // felvesz gomb
+        JButton saveButton = new JButton("Felvesz");
         saveButton.setBounds(50, 140, 80, 30);
         saveButton.setVisible(true);
         bankFrame.add(saveButton);
 
         saveButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.getMoney(200);
+                Player.getLoan(loanMoney);
+                Player.haveLoan = true;
+                bankFrame.dispose();
+            }
+        });
+
+        // visszaad gomb
+        JButton giveBackButton = new JButton("Visszafizet");
+        giveBackButton.setBounds(150, 140, 80, 30);
+        giveBackButton.setVisible(true);
+        bankFrame.add(giveBackButton);
+
+        saveButton.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                Player.giveLoan(loanMoney);
+                if (Player.loan == 0) {
                 Player.haveLoan = true;
             }
+                bankFrame.dispose();
+        }
         });
 
 
         JButton exitButton = new JButton("Exit");
-        exitButton.setBounds(140, 140, 80, 30);
+        exitButton.setBounds(250, 140, 80, 30);
         exitButton.setVisible(true);
         bankFrame.add(exitButton);
+        bankFrame.dispose();
 
 
         bankFrame.setVisible(true);

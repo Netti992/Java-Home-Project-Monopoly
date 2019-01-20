@@ -50,11 +50,16 @@ public class Electric_shop extends Field {
 
         radioButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(500);
-                Player.haveRadio = true;
-                electricShopFrame.dispose();
-                System.out.println(Player.haveRadio);
-                Playing_field.refresh(player);
+                if (Player.haveHouse) {
+                    Player.lostMoney(500);
+                    Player.haveRadio = true;
+                    electricShopFrame.dispose();
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
 
@@ -68,11 +73,17 @@ public class Electric_shop extends Field {
 
         tvButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(6000);
-                Player.haveTv = true;
-                electricShopFrame.dispose();
-                System.out.println(Player.haveTv);
-                Playing_field.refresh(player);
+                if (Player.haveHouse) {
+                    Player.lostMoney(6000);
+                    Player.haveTv = true;
+                    electricShopFrame.dispose();
+                    System.out.println(Player.haveTv);
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
 
@@ -86,11 +97,16 @@ public class Electric_shop extends Field {
 
         washingMachineButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(6000);
-                Player.haveWashingMachine = true;
-                electricShopFrame.dispose();
-                System.out.println(Player.haveWashingMachine);
-                Playing_field.refresh(player);
+                if (Player.haveHouse) {
+                    Player.lostMoney(6000);
+                    Player.haveWashingMachine = true;
+                    electricShopFrame.dispose();
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
 
@@ -104,11 +120,16 @@ public class Electric_shop extends Field {
 
         vacuumCleanerButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(3000);
-                Player.haveVacumCleaner = true;
-                electricShopFrame.dispose();
-                System.out.println(Player.haveVacumCleaner);
-                Playing_field.refresh(player);
+                if (Player.haveHouse) {
+                    Player.lostMoney(3000);
+                    Player.haveVacumCleaner = true;
+                    electricShopFrame.dispose();
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
 
@@ -122,11 +143,17 @@ public class Electric_shop extends Field {
 
         laptopButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(10000);
-                Player.haveLaptop = true;
-                electricShopFrame.dispose();
-                System.out.println(Player.haveLaptop);
-                Playing_field.refresh(player);
+                if (Player.haveHouse) {
+                    Player.lostMoney(10000);
+                    Player.haveLaptop = true;
+                    electricShopFrame.dispose();
+                    System.out.println(Player.haveLaptop);
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
 

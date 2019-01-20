@@ -193,7 +193,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(house1);
 
         // második játékos pontjai és bútorai
-        computerButton = new JButton("Monopoly");
+        computerButton = new JButton("Mr. Monopoly");
         if (!computerPlayer.meTurn) {
             computerButton.setBackground(new Color(154,205,50));
         } else {

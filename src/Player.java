@@ -34,6 +34,7 @@ public class Player extends JLabel {
         actualPlace += 1;
 
         Start.newRound();
+        haveYouHouse();
         this.setBounds(Playing_field.playingField[actualPlace].getX(), Playing_field.playingField[actualPlace].getY(), 40, 40);
 
             //Playing_field.playingField[actualPlace].activityEvent();
@@ -60,6 +61,11 @@ public class Player extends JLabel {
         loan += newLoan;
     }
 
+    // ha a játékos kölcsönt fizet vissza, a loan -ból veszi el
+    public static void giveLoan(int giveLoan) {
+        loan -= giveLoan;
+    }
+
     // ha a játékosnak kölcsöne van, minden körben visszafizetheti az egészet, vagy kötelezően az 5%-t
     public static void payLoan() {
         if (Player.loan > 20) {
@@ -70,12 +76,25 @@ public class Player extends JLabel {
         }
     }
 
-    //
+    // egyszer egyik, azután a másik játékos lép
     public static void nextPlayer(Player player) {
         if (player.whoTurn == 0) {
             player.meTurn = true;
         }
         else player.meTurn = false;
     }
+
+
+    // ha nincs lakása, minden körben fizet 500-t
+    public static void haveYouHouse() {
+        if (!Player.haveHouse) {
+            lostMoney(500);
+        }
+    }
+
 }
+
+
+
+
 

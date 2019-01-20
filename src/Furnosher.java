@@ -16,7 +16,7 @@ public class Furnosher extends Field {
             JOptionPane.showMessageDialog(null, "Furnosher");
     }
 
-    public static void furnosher() {
+    public static void furnosher(Player player) {
         JDialog furnosherFrame = new JDialog();
         furnosherFrame.setSize(400, 400);
         furnosherFrame.setLayout(null);
@@ -44,9 +44,16 @@ public class Furnosher extends Field {
 
         couchButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(5000);
-                Player.haveCouch = true;
-                System.out.println(Player.haveCouch);
+                if (Player.haveHouse) {
+                    Player.lostMoney(5000);
+                    Player.haveCouch = true;
+                    furnosherFrame.dispose();
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
 
@@ -59,10 +66,16 @@ public class Furnosher extends Field {
 
         armChairButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(2000);
-                Player.haveArmChair = true;
-                furnosherFrame.dispose();
-                System.out.println(Player.haveArmChair);
+                if (Player.haveHouse) {
+                    Player.lostMoney(2000);
+                    Player.haveArmChair = true;
+                    furnosherFrame.dispose();
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
 
@@ -75,9 +88,16 @@ public class Furnosher extends Field {
 
         kitchenFurnitureButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(6000);
-                Player.haveKitchenFurniture = true;
-                System.out.println(Player.haveKitchenFurniture);
+                if (Player.haveHouse) {
+                    Player.lostMoney(6000);
+                    Player.haveKitchenFurniture = true;
+                    furnosherFrame.dispose();
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
 
@@ -90,9 +110,16 @@ public class Furnosher extends Field {
 
         bedButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(4000);
-                Player.haveBed = true;
-                System.out.println(Player.haveBed);
+                if (Player.haveHouse) {
+                    Player.lostMoney(4000);
+                    Player.haveBed = true;
+                    furnosherFrame.dispose();
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
 
@@ -105,9 +132,16 @@ public class Furnosher extends Field {
 
         cupBoardButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.lostMoney(5000);
-                Player.haveCupBoard = true;
-                System.out.println(Player.haveCouch);
+                if (Player.haveHouse) {
+                    Player.lostMoney(5000);
+                    Player.haveCupBoard = true;
+                    furnosherFrame.dispose();
+                    Playing_field.refresh(player);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
+                            "itt vásárolni");
+                }
             }
         });
     }
