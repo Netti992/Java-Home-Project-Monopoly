@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -8,11 +9,17 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 public class Characters {
 
     static String playerName;
+    static int characterNumber;
+    JButton character1;
+    JButton character2;
+    JButton character3;
+    JButton character4;
 
     public Characters() {
 
     // karakterválasztó
     JFrame characterChooseFrame = new JFrame();
+        characterChooseFrame.setBackground(Color.white);
         characterChooseFrame.setResizable(true);
         characterChooseFrame.setSize(700, 500);
         characterChooseFrame.setVisible(true);
@@ -36,36 +43,71 @@ public class Characters {
         characterChooseFrame.add(addYourCharacter);
 
         // karakter1
-        JButton character1 = new JButton();
-        character1.setText("");
+        character1 = new JButton();
+        character1.setIcon(new ImageIcon("./bigdog.jpg"));
         character1.setBounds(130, 160, 100, 100);
         character1.setVisible(true);
         character1.setOpaque(true);
         characterChooseFrame.add(character1);
 
+        character1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                characterNumber = 1;
+                borderToNull();
+                character1.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+            }
+        });
+
         // karakter2
-        JButton character2 = new JButton();
+        character2 = new JButton();
+        character2.setIcon(new ImageIcon("./bigbalbasaur.png"));
         character2.setText("");
         character2.setBounds(240, 160, 100, 100);
         character2.setVisible(true);
         character2.setOpaque(true);
         characterChooseFrame.add(character2);
 
+        character2.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                characterNumber = 2;
+                borderToNull();
+                character2.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+            }
+        });
+
         // karakter3
-        JButton character3 = new JButton();
+        character3 = new JButton();
+        character3.setIcon(new ImageIcon("./bigniffler.jpg"));
         character3.setText("");
         character3.setBounds(350, 160, 100, 100);
         character3.setVisible(true);
         character3.setOpaque(true);
         characterChooseFrame.add(character3);
 
+        character3.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                characterNumber = 3;
+                borderToNull();
+                character3.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+            }
+        });
+
         // karakter4
-        JButton character4 = new JButton();
+        character4 = new JButton();
+        character4.setIcon(new ImageIcon("./bigdarth.png"));
         character4.setText("");
         character4.setBounds(460, 160, 100, 100);
         character4.setVisible(true);
         character4.setOpaque(true);
         characterChooseFrame.add(character4);
+
+        character4.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                characterNumber = 4;
+                borderToNull();
+                character4.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+            }
+        });
 
 
         // névválasztáshoz felirat
@@ -93,9 +135,20 @@ public class Characters {
 
         play.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Playing_field playing_field = new Playing_field(playerName);
                 String playerName = nameField.getText();
-                characterChooseFrame.dispose();
+                if (nameField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Nem írtad be a neved!");
+                }
+                else if (characterNumber == 0) {
+                    JOptionPane.showMessageDialog(null, "Nem választottál karaktert!");
+                }
+                else if (!nameField.getText().isEmpty() && characterNumber != 0) {
+                    Playing_field playing_field = new Playing_field(playerName);
+                    characterChooseFrame.dispose();
+                    Playing_field.humanPlayer.whoTurn += 1;
+                    Player.nextPlayer(Playing_field.humanPlayer);
+                    Player.nextPlayer(Playing_field.computerPlayer);
+                }
             }
         });
 
@@ -108,4 +161,12 @@ public class Characters {
         characterChooseFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         characterChooseFrame.setBackground(Color.white);
 }
+
+    //bordernullázás
+    public void borderToNull() {
+        character1.setBorder(null);
+        character2.setBorder(null);
+        character3.setBorder(null);
+        character4.setBorder(null);
+    }
 }

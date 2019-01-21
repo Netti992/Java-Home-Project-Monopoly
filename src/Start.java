@@ -16,6 +16,7 @@ public class Start extends Field {
             Player.getMoney(4000);
             System.out.println("Money: " + Player.money);
             Player.payLoan();
+            Player.haveYouHouse();
         }
     }
     }

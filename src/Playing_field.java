@@ -12,6 +12,19 @@ public class Playing_field extends JFrame {
     static JButton humanButton;
     static JButton computerButton;
     public String playerName;
+    public static JButton laptop1;
+    public static JButton laptop2;
+    public static JButton vacumCleaner1;
+    public static JButton vacumCleaner2;
+    public static JButton washingmachine1;
+    public JButton washingmachine2;
+    public static JButton tv1;
+    public JButton tv2;
+    public static JButton radio1;
+    public static JButton radio2;
+    public static JButton cupboard1;
+
+
 
     public Playing_field(String playerName) {
 
@@ -33,16 +46,31 @@ public class Playing_field extends JFrame {
 
         // játékos
         humanPlayer = new Player();
-        humanPlayer.setBackground(Color.blue);
-        humanPlayer.setBounds(40, 20, 40, 40);
+        if (Characters.characterNumber == 1) {
+            humanPlayer.setIcon(new ImageIcon(("./smalldog.jpg")));
+        }
+        else if (Characters.characterNumber == 2) {
+            humanPlayer.setIcon(new ImageIcon(("./smallbalbasaur.png")));
+        }
+        else if (Characters.characterNumber == 3) {
+            humanPlayer.setIcon(new ImageIcon(("./smallniffler.jpg")));
+        }
+        else if (Characters.characterNumber == 4) {
+            humanPlayer.setIcon(new ImageIcon(("./smalldarth.png")));
+        }
+        humanPlayer.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        humanPlayer.setBounds(40, 20, 44, 44);
         humanPlayer.setVisible(true);
         humanPlayer.setOpaque(true);
+        humanPlayer.whoTurn += 1;
+        Player.nextPlayer(humanPlayer);
         getContentPane().add(humanPlayer);
 
         // automata játékos
         computerPlayer = new Player();
-        computerPlayer.setBackground(Color.red);
-        computerPlayer.setBounds(40, 70, 40, 40);
+        computerPlayer.setIcon(new ImageIcon("./mr.png"));
+        computerPlayer.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        computerPlayer.setBounds(40, 70, 44, 44);
         computerPlayer.setVisible(true);
         computerPlayer.setOpaque(true);
         getContentPane().add(computerPlayer);
@@ -348,24 +376,28 @@ public class Playing_field extends JFrame {
         // mindig az dob, akinek a meTurn true, a whoTurn-ből elvesz, vagy kivon
         dice.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-              //  if (humanPlayer.meTurn) {
+                if (humanPlayer.meTurn) {
                     int dice = Playing_field.throwing();
                     humanPlayer.moving(dice, humanPlayer);
-              //      humanPlayer.whoTurn += 1;
-              //      computerPlayer.whoTurn -= 1;
-              //      humanPlayer.nextPlayer(humanPlayer);
+                    humanPlayer.whoTurn += 1;
+                    computerPlayer.whoTurn -= 1;
+                    humanPlayer.nextPlayer(humanPlayer);
+                    System.out.println("human: " + humanPlayer.whoTurn);
+                    System.out.println("computer: " + computerPlayer.whoTurn);
                     refresh(humanPlayer);
                     repaint();
-              //  }
-                /*if (computerPlayer.meTurn) {
+                }
+                else if (computerPlayer.meTurn) {
                     int dice = Playing_field.throwing();
                     computerPlayer.moving(dice, computerPlayer);
                     computerPlayer.whoTurn += 1;
                     humanPlayer.whoTurn -= 1;
                     computerPlayer.nextPlayer(computerPlayer);
+                    System.out.println("human: " + humanPlayer.whoTurn);
+                    System.out.println("computer:" + computerPlayer.whoTurn);
                     refresh(computerPlayer);
                     repaint();
-                }*/
+                }
             }
         });
 
@@ -511,19 +543,71 @@ public class Playing_field extends JFrame {
 
                 this.getContentPane().add(playingField[i]);
 
-                System.out.println(playingField[i]);
-                System.out.println(playingField[i].place);
-
                 i++;
           }
         }
     }
 
+    // frissítések
     public  static void refresh(Player player) {
         humanPlayerLabel.setText("<html><font color=black> Money: </font>" + Player.money +
                 "<br><font color=black> Loan: </font>" + Player.loan + "</html>");
         computerPlayerLabel.setText("<font color=black> Money: </font>" + Player.money +
                 "<br><font color=black> Loan: </font>" + Player.loan + "</html>");
+
+        if (humanPlayer.meTurn) {
+            humanButton.setBackground(new Color(154,205,50));
+        } else {
+            humanButton.setBackground(new Color(255, 99, 71));
+        }
+
+        if (!humanPlayer.haveLaptop) {
+            laptop1.setIcon(new ImageIcon("./szurkelaptop.jpg"));
+        } else {
+            laptop1.setIcon(new ImageIcon("./laptop.jpg"));
+        }
+
+        if (!computerPlayer.haveLaptop) {
+            laptop2.setIcon(new ImageIcon("./szurkelaptop.jpg"));
+        } else {
+            laptop2.setIcon(new ImageIcon("./laptop.jpg"));
+        }
+
+        if (!humanPlayer.haveVacumCleaner) {
+            vacumCleaner1.setIcon(new ImageIcon("./szurkevacumcleaner.jpg"));
+        } else {
+            vacumCleaner1.setIcon(new ImageIcon("./vacumcleaner.jpg"));
+        }
+
+        if (!computerPlayer.haveVacumCleaner) {
+            vacumCleaner2.setIcon(new ImageIcon("./szurkevacumcleaner.jpg"));
+        } else {
+            vacumCleaner2.setIcon(new ImageIcon("./vacumcleaner.jpg"));
+        }
+
+        if (!humanPlayer.haveWashingMachine) {
+            washingmachine1.setIcon(new ImageIcon("./szurkewashingmachine.jpg"));
+        } else {
+            washingmachine1.setIcon(new ImageIcon("./washingmachine.jpg"));
+        }
+
+        if (!humanPlayer.haveTv) {
+            tv1.setIcon(new ImageIcon("./szurketv.jpg"));
+        } else {
+            tv1.setIcon(new ImageIcon("./tv.jpg"));
+        }
+
+        if (!humanPlayer.haveRadio) {
+            radio1.setIcon(new ImageIcon("./szurkeradio.jpg"));
+        } else {
+            radio1.setIcon(new ImageIcon("./radio.jpg"));
+        }
+
+        if (!computerPlayer.haveRadio) {
+            radio2.setIcon(new ImageIcon("./szurkeradio.jpg"));
+        } else {
+            radio2.setIcon(new ImageIcon("./radio.jpg"));
+        }
     }
 }
 

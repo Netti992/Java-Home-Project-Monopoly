@@ -9,7 +9,7 @@ public class Player extends JLabel {
     static int loan = 0;
     static int actualPlace = 0;
     static int whoTurn = 0;
-    static boolean meTurn;
+    static boolean meTurn = true;
 
     static boolean haveCouch = false;
     static boolean haveArmChair = false;
@@ -34,8 +34,7 @@ public class Player extends JLabel {
         actualPlace += 1;
 
         Start.newRound();
-        haveYouHouse();
-        this.setBounds(Playing_field.playingField[actualPlace].getX(), Playing_field.playingField[actualPlace].getY(), 40, 40);
+        this.setBounds(Playing_field.playingField[actualPlace].getX(), Playing_field.playingField[actualPlace].getY(), 44, 44);
 
             //Playing_field.playingField[actualPlace].activityEvent();
 
