@@ -5,8 +5,8 @@ public class Lottery extends Field {
         super(x);
     }
 
-    public void activityEvent() {
+    public void activityEvent(Player player) {
             JOptionPane.showMessageDialog(null, "Lottóztál, fizess 1000-t!");
-            Player.lostMoney(50);
+            player.lostMoney(50);
     }
 }

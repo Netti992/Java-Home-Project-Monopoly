@@ -11,11 +11,11 @@ public class Real_estate_agency extends Field {
     }
 
     @Override
-    public void activityEvent() {
+    public void activityEvent(Player player) {
 
     }
 
-    public static void realEstateEvent() {
+    public static void realEstateEvent(Player player) {
             JDialog realEstateFrame = new JDialog();
             realEstateFrame.setSize(450, 230);
             realEstateFrame.setLayout(null);
@@ -42,8 +42,8 @@ public class Real_estate_agency extends Field {
 
             yesButton.addMouseListener(new MouseAdapter() {
                 public void mousePressed(MouseEvent e) {
-                    Player.haveHouse = true;
-                    Player.lostMoney(60000);
+                    player.haveHouse = true;
+                    player.lostMoney(60000);
                     realEstateFrame.dispose();
                 }
             });

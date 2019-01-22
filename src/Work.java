@@ -5,8 +5,8 @@ public class Work extends Field {
         super(x);
     }
 
-        public void activityEvent() {
+        public void activityEvent(Player player) {
             JOptionPane.showMessageDialog(null, "You got reward!");
-            Player.getMoney(10000);
+            player.getMoney(10000);
     }
 }

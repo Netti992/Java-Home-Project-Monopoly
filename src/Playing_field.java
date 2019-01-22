@@ -4,26 +4,27 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Playing_field extends JFrame {
-    static Field[] playingField;
-    static JLabel humanPlayerLabel;
-    static JLabel computerPlayerLabel;
-    static Player humanPlayer;
-    static Player computerPlayer;
-    static JButton humanButton;
-    static JButton computerButton;
-    public String playerName;
-    public static JButton laptop1;
-    public static JButton laptop2;
-    public static JButton vacumCleaner1;
-    public static JButton vacumCleaner2;
-    public static JButton washingmachine1;
-    public JButton washingmachine2;
-    public static JButton tv1;
-    public JButton tv2;
-    public static JButton radio1;
-    public static JButton radio2;
-    public static JButton cupboard1;
+    Field[] playingField;
+    JLabel humanPlayerLabel;
+    JLabel computerPlayerLabel;
 
+    Player humanPlayer;
+    Player computerPlayer;
+
+    JButton humanButton;
+    JButton computerButton;
+    public String playerName;
+    public JButton laptop1;
+    public JButton laptop2;
+    public JButton vacumCleaner1;
+    public JButton vacumCleaner2;
+    public JButton washingmachine1;
+    public JButton washingmachine2;
+    public JButton tv1;
+    public JButton tv2;
+    public JButton radio1;
+    public JButton radio2;
+    public JButton cupboard1;
 
 
     public Playing_field(String playerName) {
@@ -45,7 +46,7 @@ public class Playing_field extends JFrame {
 
 
         // játékos
-        humanPlayer = new Player();
+        humanPlayer = new Player(this);
         if (Characters.characterNumber == 1) {
             humanPlayer.setIcon(new ImageIcon(("./smalldog.jpg")));
         }
@@ -63,16 +64,20 @@ public class Playing_field extends JFrame {
         humanPlayer.setVisible(true);
         humanPlayer.setOpaque(true);
         humanPlayer.whoTurn += 1;
-        Player.nextPlayer(humanPlayer);
+        humanPlayer.nextPlayer();
+        System.out.println("Human: " + humanPlayer.meTurn);
+        System.out.println("Human: " + humanPlayer.whoTurn);
         getContentPane().add(humanPlayer);
 
         // automata játékos
-        computerPlayer = new Player();
+        computerPlayer = new Player(this);
         computerPlayer.setIcon(new ImageIcon("./mr.png"));
         computerPlayer.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         computerPlayer.setBounds(40, 70, 44, 44);
         computerPlayer.setVisible(true);
         computerPlayer.setOpaque(true);
+        System.out.println("Computer: " + computerPlayer.meTurn);
+        System.out.println("Computer: " + computerPlayer.whoTurn);
         getContentPane().add(computerPlayer);
 
         // első játékos pontjai és bútorai
@@ -99,7 +104,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(humanPlayerLabel);
 
         // bútorok
-        JButton laptop1 = new JButton();
+        laptop1 = new JButton();
         if (!humanPlayer.haveLaptop) {
             laptop1.setIcon(new ImageIcon("./szurkelaptop.jpg"));
         } else {
@@ -110,7 +115,7 @@ public class Playing_field extends JFrame {
         laptop1.setOpaque(true);
         getContentPane().add(laptop1);
 
-        JButton vacumCleaner1 = new JButton();
+        vacumCleaner1 = new JButton();
         if (!humanPlayer.haveVacumCleaner) {
             vacumCleaner1.setIcon(new ImageIcon("./szurkevacumcleaner.jpg"));
         } else {
@@ -121,7 +126,7 @@ public class Playing_field extends JFrame {
         vacumCleaner1.setOpaque(true);
         getContentPane().add(vacumCleaner1);
 
-        JButton washingmachine1 = new JButton();
+        washingmachine1 = new JButton();
         if (!humanPlayer.haveWashingMachine) {
             washingmachine1.setIcon(new ImageIcon("./szurkewashingmachine.jpg"));
         } else {
@@ -132,7 +137,7 @@ public class Playing_field extends JFrame {
         washingmachine1.setOpaque(true);
         getContentPane().add(washingmachine1);
 
-        JButton tv1 = new JButton();
+        tv1 = new JButton();
         if (!humanPlayer.haveTv) {
             tv1.setIcon(new ImageIcon("./szurketv.jpg"));
         } else {
@@ -143,7 +148,7 @@ public class Playing_field extends JFrame {
         tv1.setOpaque(true);
         getContentPane().add(tv1);
 
-        JButton radio1 = new JButton();
+        radio1 = new JButton();
         if (!humanPlayer.haveRadio) {
             radio1.setIcon(new ImageIcon("./szurkeradio.jpg"));
         } else {
@@ -222,7 +227,7 @@ public class Playing_field extends JFrame {
 
         // második játékos pontjai és bútorai
         computerButton = new JButton("Mr. Monopoly");
-        if (!computerPlayer.meTurn) {
+        if (computerPlayer.meTurn) {
             computerButton.setBackground(new Color(154,205,50));
         } else {
             computerButton.setBackground(new Color(255, 99, 71));
@@ -233,7 +238,7 @@ public class Playing_field extends JFrame {
         computerButton.setVisible(true);
         getContentPane().add(computerButton);
 
-        JLabel computerPlayerLabel = new JLabel("<html><font color=black> Money: </font>" + computerPlayer.money +
+        computerPlayerLabel = new JLabel("<html><font color=black> Money: </font>" + computerPlayer.money +
                 "<br><font color=black> Loan: </font>" + computerPlayer.loan + "</html>");
         computerPlayerLabel.setFont(myFont);
         computerPlayerLabel.setBounds(530, 280, 150, 100);
@@ -243,7 +248,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(computerPlayerLabel);
 
         // bútorok
-        JButton laptop2 = new JButton();
+        laptop2 = new JButton();
         if (!computerPlayer.haveLaptop) {
             laptop2.setIcon(new ImageIcon("./szurkelaptop.jpg"));
         } else {
@@ -254,7 +259,7 @@ public class Playing_field extends JFrame {
         laptop2.setOpaque(true);
         getContentPane().add(laptop2);
 
-        JButton vacumCleaner2 = new JButton();
+        vacumCleaner2 = new JButton();
         if (!computerPlayer.haveVacumCleaner) {
             vacumCleaner2.setIcon(new ImageIcon("./szurkevacumcleaner.jpg"));
         } else {
@@ -287,7 +292,7 @@ public class Playing_field extends JFrame {
         tv2.setOpaque(true);
         getContentPane().add(tv2);
 
-        JButton radio2 = new JButton();
+        radio2 = new JButton();
         if (!computerPlayer.haveRadio) {
             radio2.setIcon(new ImageIcon("./szurkeradio.jpg"));
         } else {
@@ -377,11 +382,12 @@ public class Playing_field extends JFrame {
         dice.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (humanPlayer.meTurn) {
-                    int dice = Playing_field.throwing();
-                    humanPlayer.moving(dice, humanPlayer);
+                    int dice = throwing();
+                    humanPlayer.moving(dice);
                     humanPlayer.whoTurn += 1;
                     computerPlayer.whoTurn -= 1;
-                    humanPlayer.nextPlayer(humanPlayer);
+                    humanPlayer.nextPlayer();
+                    computerPlayer.nextPlayer();
                     System.out.println("human: " + humanPlayer.whoTurn);
                     System.out.println("computer: " + computerPlayer.whoTurn);
                     refresh(humanPlayer);
@@ -389,10 +395,11 @@ public class Playing_field extends JFrame {
                 }
                 else if (computerPlayer.meTurn) {
                     int dice = Playing_field.throwing();
-                    computerPlayer.moving(dice, computerPlayer);
+                    computerPlayer.moving(dice);
                     computerPlayer.whoTurn += 1;
                     humanPlayer.whoTurn -= 1;
-                    computerPlayer.nextPlayer(computerPlayer);
+                    humanPlayer.nextPlayer();
+                    computerPlayer.nextPlayer();
                     System.out.println("human: " + humanPlayer.whoTurn);
                     System.out.println("computer:" + computerPlayer.whoTurn);
                     refresh(computerPlayer);
@@ -549,16 +556,22 @@ public class Playing_field extends JFrame {
     }
 
     // frissítések
-    public  static void refresh(Player player) {
-        humanPlayerLabel.setText("<html><font color=black> Money: </font>" + Player.money +
-                "<br><font color=black> Loan: </font>" + Player.loan + "</html>");
-        computerPlayerLabel.setText("<font color=black> Money: </font>" + Player.money +
-                "<br><font color=black> Loan: </font>" + Player.loan + "</html>");
+    public void refresh(Player player) {
+        humanPlayerLabel.setText("<html><font color=black> Money: </font>" + humanPlayer.money +
+                "<br><font color=black> Loan: </font>" + humanPlayer.loan + "</html>");
+        computerPlayerLabel.setText("<html><font color=black> Money: </font>" + computerPlayer.money +
+                "<br><font color=black> Loan: </font>" + computerPlayer.loan + "</html>");
 
         if (humanPlayer.meTurn) {
             humanButton.setBackground(new Color(154,205,50));
         } else {
             humanButton.setBackground(new Color(255, 99, 71));
+        }
+
+        if (computerPlayer.meTurn) {
+            computerButton.setBackground(new Color(154,205,50));
+        } else {
+            computerButton.setBackground(new Color(255, 99, 71));
         }
 
         if (!humanPlayer.haveLaptop) {
@@ -609,5 +622,7 @@ public class Playing_field extends JFrame {
             radio2.setIcon(new ImageIcon("./radio.jpg"));
         }
     }
+
+
 }
 

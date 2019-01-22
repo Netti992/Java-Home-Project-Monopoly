@@ -6,9 +6,9 @@ public class You_lettered extends Field {
         super(x);
     }
 
-    public void activityEvent() {
+    public void activityEvent(Player player) {
             JOptionPane.showMessageDialog(null, "You littered! Pay 200!");
-            Player.lostMoney(200);
+            player.lostMoney(200);
     }
 }
 

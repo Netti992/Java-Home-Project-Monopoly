@@ -3,94 +3,114 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Player extends JLabel {
-    static boolean haveHouse = false;
+    boolean haveHouse = true;
 
-    static int money = 0;
-    static int loan = 0;
-    static int actualPlace = 0;
-    static int whoTurn = 0;
-    static boolean meTurn = true;
+    int money = 0;
+    int loan = 0;
+    int actualPlace = 0;
+    int whoTurn = 0;
+    boolean meTurn = true;
 
-    static boolean haveCouch = false;
-    static boolean haveArmChair = false;
-    static boolean haveKitchenFurniture = false;
-    static boolean haveBed = false;
-    static boolean haveCupBoard = false;
-    static boolean haveRadio = false;
-    static boolean haveTv = false;
-    static boolean haveWashingMachine = false;
-    static boolean haveVacumCleaner = false;
-    static boolean haveLaptop = false;
+    boolean haveCouch = false;
+    boolean haveArmChair = false;
+    boolean haveKitchenFurniture = false;
+    boolean haveBed = false;
+    boolean haveCupBoard = false;
+    boolean haveRadio = false;
+    boolean haveTv = false;
+    boolean haveWashingMachine = false;
+    boolean haveVacumCleaner = false;
+    boolean haveLaptop = false;
+    Playing_field playing_field;
 
-    static boolean haveLoan = false;
+    boolean haveLoan = false;
 
-    public Player() {
-
+    public Player(Playing_field playing_field) {
+        this.playing_field = playing_field;
     }
 
+    public int getActualPlace(int actualPlace) {
+        return this.actualPlace = actualPlace;
+    }
 
     // amennyit dob, annyit megy előre
-    public void moving(int dice, Player player) {
+    public void moving(int dice) {
         actualPlace += 1;
 
-        Start.newRound();
-        this.setBounds(Playing_field.playingField[actualPlace].getX(), Playing_field.playingField[actualPlace].getY(), 44, 44);
+        Start.newRound(this);
+        this.setBounds(playing_field.playingField[actualPlace].getX(), playing_field.playingField[actualPlace].getY(), 44, 44);
 
-            //Playing_field.playingField[actualPlace].activityEvent();
+           playing_field.playingField[actualPlace].activityEvent(this);
+
 
         //Bank.bankEvent();
-        Electric_shop.electric(this);
-        //Furnosher.furnosher();
+        //Electric_shop.electric(this);
+        //furnosher(this);
         //Real_estate_agency.realEstateEvent();
         System.out.println("ActualPlace: " + actualPlace);
     }
 
     // ha a játékos pénzt kap
-    public static void getMoney(int newMoney) {
+    public void getMoney(int newMoney) {
         money += newMoney;
     }
 
     // ha a játékos pénzt veszít
-    public static void lostMoney(int lostMoney) {
+    public void lostMoney(int lostMoney) {
         money -= lostMoney;
     }
 
     // ha a játékos kölcsönt vesz fel, a loan -hoz adja
-    public static void getLoan(int newLoan) {
+    public void getLoan(int newLoan) {
         loan += newLoan;
     }
 
     // ha a játékos kölcsönt fizet vissza, a loan -ból veszi el
-    public static void giveLoan(int giveLoan) {
+    public void giveLoan(int giveLoan) {
         loan -= giveLoan;
     }
 
     // ha a játékosnak kölcsöne van, minden körben visszafizetheti az egészet, vagy kötelezően az 5%-t
-    public static void payLoan() {
-        if (Player.loan > 20) {
+    public void payLoan() {
+        if (getLoan() > 20) {
             loan *= 0.95;
         } else {
             loan = 0;
-            Player.haveLoan = false;
+            setHaveLoan(false);
         }
     }
 
     // egyszer egyik, azután a másik játékos lép
-    public static void nextPlayer(Player player) {
-        if (player.whoTurn == 0) {
-            player.meTurn = true;
+    public void nextPlayer() {
+        if (whoTurn == 0) {
+            meTurn = true;
         }
-        else player.meTurn = false;
+        else meTurn = false;
     }
 
 
     // ha nincs lakása, minden körben fizet 500-t
-    public static void haveYouHouse() {
-        if (!Player.haveHouse) {
+    public void haveYouHouse() {
+        if (!getHaveHouse(true)) {
             lostMoney(500);
         }
     }
 
+    public int getLoan() {
+        return loan;
+    }
+
+    public boolean getHaveLoan() {
+        return haveLoan;
+    }
+
+    public void setHaveLoan(boolean haveLoan) {
+        this.haveLoan = haveLoan;
+    }
+
+    public boolean getHaveHouse(boolean haveHouse) {
+        return haveHouse;
+    }
 }
 
 

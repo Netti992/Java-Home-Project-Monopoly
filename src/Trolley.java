@@ -5,7 +5,7 @@ public class Trolley extends Field {
         super(x);
     }
 
-    public void activityEvent() {
+    public void activityEvent(Player player) {
             JOptionPane.showMessageDialog(null, "You travel with trolley, you can throw once more");
     }
     }

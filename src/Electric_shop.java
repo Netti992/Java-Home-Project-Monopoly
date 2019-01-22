@@ -15,18 +15,17 @@ public class Electric_shop extends Field {
     }
 
     @Override
-    public void activityEvent() {
+    public void activityEvent(Player player) {
 
     }
 
-    public static void electric(Player player) {
+    public void electric(Player player) {
         JDialog electricShopFrame = new JDialog();
         electricShopFrame.setSize(400, 400);
         electricShopFrame.setLayout(null);
         electricShopFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         electricShopFrame.setResizable(true);
         electricShopFrame.setBackground(Color.white);
-        Playing_field.refresh(player);
 
         // Frame magyarázata
         JLabel electricShopText = new JLabel("<html><font color=black><Strong>Itt vásárolhatsz electronikai termékeket.&nbsp</Strong></font>" +
@@ -38,7 +37,6 @@ public class Electric_shop extends Field {
         electricShopText.setVerticalAlignment(JLabel.TOP);
         electricShopText.setVisible(true);
         electricShopFrame.add(electricShopText);
-        Playing_field.refresh(player);
 
         // rádió
         JButton radioButton = new JButton();
@@ -50,11 +48,10 @@ public class Electric_shop extends Field {
 
         radioButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (Player.haveHouse) {
-                    Player.lostMoney(500);
-                    Player.haveRadio = true;
+                if (player.haveHouse) {
+                    player.lostMoney(500);
+                    player.haveRadio = true;
                     electricShopFrame.dispose();
-                    Playing_field.refresh(player);
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
@@ -73,12 +70,11 @@ public class Electric_shop extends Field {
 
         tvButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (Player.haveHouse) {
-                    Player.lostMoney(6000);
-                    Player.haveTv = true;
+                if (player.haveHouse) {
+                    player.lostMoney(6000);
+                    player.haveTv = true;
                     electricShopFrame.dispose();
-                    System.out.println(Player.haveTv);
-                    Playing_field.refresh(player);
+                    System.out.println(player.haveTv);
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
@@ -97,11 +93,10 @@ public class Electric_shop extends Field {
 
         washingMachineButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (Player.haveHouse) {
-                    Player.lostMoney(6000);
-                    Player.haveWashingMachine = true;
+                if (player.haveHouse) {
+                    player.lostMoney(6000);
+                    player.haveWashingMachine = true;
                     electricShopFrame.dispose();
-                    Playing_field.refresh(player);
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
@@ -120,11 +115,10 @@ public class Electric_shop extends Field {
 
         vacuumCleanerButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (Player.haveHouse) {
-                    Player.lostMoney(3000);
-                    Player.haveVacumCleaner = true;
+                if (player.haveHouse) {
+                    player.lostMoney(3000);
+                    player.haveVacumCleaner = true;
                     electricShopFrame.dispose();
-                    Playing_field.refresh(player);
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
@@ -143,12 +137,11 @@ public class Electric_shop extends Field {
 
         laptopButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (Player.haveHouse) {
-                    Player.lostMoney(10000);
-                    Player.haveLaptop = true;
+                if (player.haveHouse) {
+                    player.lostMoney(10000);
+                    player.haveLaptop = true;
                     electricShopFrame.dispose();
-                    System.out.println(Player.haveLaptop);
-                    Playing_field.refresh(player);
+                    System.out.println(player.haveLaptop);
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +

@@ -5,8 +5,8 @@ public class Prison extends Field {
         super(x);
     }
 
-    public void activityEvent() {
+    public void activityEvent(Player player) {
             JOptionPane.showMessageDialog(null, "Börtönben vagy, fizess 1000-t!");
-            Player.lostMoney(500);
+            player.lostMoney(500);
         }
 }

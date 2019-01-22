@@ -11,11 +11,11 @@ public class Bank extends Field {
     }
 
     @Override
-    public void activityEvent() {
+    public void activityEvent(Player player) {
 
     }
 
-    public static void bankEvent() {
+    public static void bankEvent(Player player) {
         JDialog bankFrame = new JDialog();
         bankFrame.setSize(300, 250);
         bankFrame.setLayout(null);
@@ -50,8 +50,8 @@ public class Bank extends Field {
 
         saveButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.getLoan(loanMoney);
-                Player.haveLoan = true;
+                player.getLoan(loanMoney);
+                player.haveLoan = true;
                 bankFrame.dispose();
             }
         });
@@ -64,9 +64,9 @@ public class Bank extends Field {
 
         saveButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Player.giveLoan(loanMoney);
-                if (Player.loan == 0) {
-                Player.haveLoan = true;
+                player.giveLoan(loanMoney);
+                if (player.loan == 0) {
+                player.haveLoan = true;
             }
                 bankFrame.dispose();
         }

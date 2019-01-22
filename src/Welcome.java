@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 public class Welcome {
+    Characters characters;
 
     public Welcome() {
         JFrame welcomeFrame = new JFrame();
@@ -38,7 +39,7 @@ public class Welcome {
 
         next.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                Characters characters = new Characters();
+                characters = new Characters();
                 welcomeFrame.dispose();
             }
         });
@@ -51,5 +52,9 @@ public class Welcome {
         welcomeFrame.setLayout(null);
         welcomeFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         welcomeFrame.setBackground(Color.white);
+    }
+
+    public Characters getCharacters() {
+        return characters;
     }
 }

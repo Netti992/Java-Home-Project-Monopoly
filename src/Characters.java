@@ -14,6 +14,7 @@ public class Characters {
     JButton character2;
     JButton character3;
     JButton character4;
+    Playing_field playing_field;
 
     public Characters() {
 
@@ -143,11 +144,9 @@ public class Characters {
                     JOptionPane.showMessageDialog(null, "Nem választottál karaktert!");
                 }
                 else if (!nameField.getText().isEmpty() && characterNumber != 0) {
-                    Playing_field playing_field = new Playing_field(playerName);
+                    playing_field = new Playing_field(playerName);
                     characterChooseFrame.dispose();
-                    Playing_field.humanPlayer.whoTurn += 1;
-                    Player.nextPlayer(Playing_field.humanPlayer);
-                    Player.nextPlayer(Playing_field.computerPlayer);
+                    //Playing_field.humanPlayer.whoTurn += 1;
                 }
             }
         });
@@ -168,5 +167,9 @@ public class Characters {
         character2.setBorder(null);
         character3.setBorder(null);
         character4.setBorder(null);
+    }
+
+    public Playing_field getPlaying_field() {
+        return playing_field;
     }
 }

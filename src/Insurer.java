@@ -5,7 +5,7 @@ public class Insurer extends Field {
         super(x);
     }
 
-    public void activityEvent() {
+    public void activityEvent(Player player) {
         JOptionPane.showMessageDialog(null, "Biztosító");
     }
 }
