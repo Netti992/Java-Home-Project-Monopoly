@@ -14,33 +14,56 @@ public class Welcome {
         welcomeFrame.setSize(700, 500);
         welcomeFrame.setVisible(true);
 
+        JLabel background = new JLabel();
+        background.setSize(700, 500);
+        background.setIcon(new ImageIcon("./background.jpg"));
+        background.setVisible(true);
+        background.setOpaque(true);
+        welcomeFrame.add(background);
+
         // logo
         JButton text = new JButton("");
         text.setIcon((new ImageIcon("./text.jpg")));
         text.setBounds(100, 10, 500, 80);
         text.setVisible(true);
         text.setOpaque(true);
-        welcomeFrame.add(text);
+        background.add(text);
 
         // üdvözlőkép
         JButton welcomePicture = new JButton();
+        welcomePicture.setIcon((new ImageIcon("./welcome.jpg")));
         welcomePicture.setBounds(40, 110, 600, 270);
         welcomePicture.setVisible(true);
         welcomePicture.setOpaque(true);
-        welcomeFrame.add(welcomePicture);
+        background.add(welcomePicture);
 
         // play gomb, megnyomására indul a játék
         JButton next = new JButton();
         next.setText("Next");
-        next.setBounds(290, 400, 100, 40);
+        next.setBounds(230, 400, 100, 40);
         next.setVisible(true);
         next.setOpaque(true);
-        welcomeFrame.add(next);
+        background.add(next);
+        next.setFocusable(false);
 
         next.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 characters = new Characters();
                 welcomeFrame.dispose();
+            }
+        });
+
+        JButton rules = new JButton();
+        rules.setText("Rules");
+        rules.setBounds(340, 400, 100, 40);
+        rules.setVisible(true);
+        rules.setOpaque(true);
+        rules.setFocusable(false);
+        background.add(rules);
+
+        rules.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                JOptionPane.showMessageDialog(null, "There will be the rules!");
             }
         });
 

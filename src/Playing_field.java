@@ -4,6 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Playing_field extends JFrame {
+    JLabel background;
     Field[] playingField;
     JLabel humanPlayerLabel;
     JLabel computerPlayerLabel;
@@ -43,8 +44,6 @@ public class Playing_field extends JFrame {
 
         getContentPane().setBackground(Color.white);
 
-
-
         // játékos
         humanPlayer = new Player(this);
         if (Characters.characterNumber == 1) {
@@ -73,7 +72,7 @@ public class Playing_field extends JFrame {
         computerPlayer = new Player(this);
         computerPlayer.setIcon(new ImageIcon("./mr.png"));
         computerPlayer.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        computerPlayer.setBounds(40, 70, 44, 44);
+        computerPlayer.setBounds(40, 50 + 20, 44, 44);
         computerPlayer.setVisible(true);
         computerPlayer.setOpaque(true);
         System.out.println("Computer: " + computerPlayer.meTurn);
@@ -82,12 +81,13 @@ public class Playing_field extends JFrame {
 
         // első játékos pontjai és bútorai
         humanButton = new JButton(playerName);
+        humanButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 18));
         if (humanPlayer.meTurn) {
             humanButton.setBackground(new Color(154,205,50));
         } else {
             humanButton.setBackground(new Color(255, 99, 71));
         }
-        humanButton.setBounds(240, 220, 150, 50);
+        humanButton.setBounds(240, 220, 150, 40);
         humanButton.setHorizontalAlignment(JLabel.CENTER);
         humanButton.setVerticalAlignment(JLabel.TOP);
         humanButton.setVisible(true);
@@ -95,9 +95,9 @@ public class Playing_field extends JFrame {
 
         humanPlayerLabel = new JLabel("<html><font color=black> Money: </font>" + humanPlayer.money +
                 "<br><font color=black> Loan: </font>" + humanPlayer.loan + "</html>");
-        Font myFont = new Font("Perpetua", Font.BOLD, 18);
+        Font myFont = new Font(Font.DIALOG_INPUT, Font.BOLD, 18);
         humanPlayerLabel.setFont(myFont);
-        humanPlayerLabel.setBounds(240, 280, 150, 100);
+        humanPlayerLabel.setBounds(230, 270, 170, 100);
         humanPlayerLabel.setHorizontalAlignment(JLabel.CENTER);
         humanPlayerLabel.setVerticalAlignment(JLabel.TOP);
         humanPlayerLabel.setVisible(true);
@@ -227,12 +227,13 @@ public class Playing_field extends JFrame {
 
         // második játékos pontjai és bútorai
         computerButton = new JButton("Mr. Monopoly");
+        computerButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 18));
         if (computerPlayer.meTurn) {
             computerButton.setBackground(new Color(154,205,50));
         } else {
             computerButton.setBackground(new Color(255, 99, 71));
         }
-        computerButton.setBounds(530, 220, 150, 50);
+        computerButton.setBounds(520, 220, 170, 40);
         computerButton.setHorizontalAlignment(JLabel.CENTER);
         computerButton.setVerticalAlignment(JLabel.TOP);
         computerButton.setVisible(true);
@@ -241,7 +242,7 @@ public class Playing_field extends JFrame {
         computerPlayerLabel = new JLabel("<html><font color=black> Money: </font>" + computerPlayer.money +
                 "<br><font color=black> Loan: </font>" + computerPlayer.loan + "</html>");
         computerPlayerLabel.setFont(myFont);
-        computerPlayerLabel.setBounds(530, 280, 150, 100);
+        computerPlayerLabel.setBounds(530, 270, 150, 100);
         computerPlayerLabel.setHorizontalAlignment(JLabel.CENTER);
         computerPlayerLabel.setVerticalAlignment(JLabel.TOP);
         computerPlayerLabel.setVisible(true);
@@ -551,8 +552,16 @@ public class Playing_field extends JFrame {
                 this.getContentPane().add(playingField[i]);
 
                 i++;
-          }
         }
+        }
+
+            background = new JLabel();
+            background.setSize(1200, 700);
+            background.setIcon(new ImageIcon("./background.jpg"));
+            background.setVisible(true);
+            background.setOpaque(true);
+            getContentPane().add(background);
+
     }
 
     // frissítések
@@ -622,7 +631,5 @@ public class Playing_field extends JFrame {
             radio2.setIcon(new ImageIcon("./radio.jpg"));
         }
     }
-
-
 }
 

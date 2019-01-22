@@ -40,7 +40,7 @@ public class Player extends JLabel {
         Start.newRound(this);
         this.setBounds(playing_field.playingField[actualPlace].getX(), playing_field.playingField[actualPlace].getY(), 44, 44);
 
-           playing_field.playingField[actualPlace].activityEvent(this);
+           //playing_field.playingField[actualPlace].activityEvent(this);
 
 
         //Bank.bankEvent();

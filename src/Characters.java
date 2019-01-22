@@ -25,23 +25,30 @@ public class Characters {
         characterChooseFrame.setSize(700, 500);
         characterChooseFrame.setVisible(true);
 
+        JLabel background = new JLabel();
+        background.setSize(700, 500);
+        background.setIcon(new ImageIcon("./background.jpg"));
+        background.setVisible(true);
+        background.setOpaque(true);
+        characterChooseFrame.add(background);
+
     // logo
     JButton text2 = new JButton("");
         text2.setIcon((new ImageIcon("./text.jpg")));
         text2.setBounds(99, 10, 500, 80);
         text2.setVisible(true);
         text2.setOpaque(true);
-        characterChooseFrame.add(text2);
+        background.add(text2);
 
         // karakterválasztáshoz felirat
-        JLabel addYourCharacter = new JLabel("<html><font color=black>Válaszd ki a karaktered: </font></html>");
-        Font myFont = new Font("Perpetua", Font.BOLD, 18);
+        JLabel addYourCharacter = new JLabel("<html><font color=black>Choose your character: </font></html>");
+        Font myFont = new Font(Font.DIALOG_INPUT, Font.BOLD, 18);
         addYourCharacter.setFont(myFont);
-        addYourCharacter.setBounds(210, 100, 250, 100);
+        addYourCharacter.setBounds(210, 110, 300, 100);
         addYourCharacter.setHorizontalAlignment(JLabel.CENTER);
         addYourCharacter.setVerticalAlignment(JLabel.TOP);
         addYourCharacter.setVisible(true);
-        characterChooseFrame.add(addYourCharacter);
+        background.add(addYourCharacter);
 
         // karakter1
         character1 = new JButton();
@@ -49,7 +56,7 @@ public class Characters {
         character1.setBounds(130, 160, 100, 100);
         character1.setVisible(true);
         character1.setOpaque(true);
-        characterChooseFrame.add(character1);
+        background.add(character1);
 
         character1.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -66,7 +73,7 @@ public class Characters {
         character2.setBounds(240, 160, 100, 100);
         character2.setVisible(true);
         character2.setOpaque(true);
-        characterChooseFrame.add(character2);
+        background.add(character2);
 
         character2.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -83,7 +90,7 @@ public class Characters {
         character3.setBounds(350, 160, 100, 100);
         character3.setVisible(true);
         character3.setOpaque(true);
-        characterChooseFrame.add(character3);
+        background.add(character3);
 
         character3.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -100,7 +107,7 @@ public class Characters {
         character4.setBounds(460, 160, 100, 100);
         character4.setVisible(true);
         character4.setOpaque(true);
-        characterChooseFrame.add(character4);
+        background.add(character4);
 
         character4.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -112,19 +119,18 @@ public class Characters {
 
 
         // névválasztáshoz felirat
-        JLabel addYourName = new JLabel("<html><font color=black>Add meg a neved: </font></html>");
-        Font myFont2 = new Font("Perpetua", Font.BOLD, 18);
+        JLabel addYourName = new JLabel("<html><font color=black>Write your name: </font></html>");
         addYourName.setFont(myFont);
-        addYourName.setBounds(265, 300, 150, 100);
+        addYourName.setBounds(250, 300, 200, 100);
         addYourName.setHorizontalAlignment(JLabel.CENTER);
         addYourName.setVerticalAlignment(JLabel.TOP);
         addYourName.setVisible(true);
-        characterChooseFrame.add(addYourName);
+        background.add(addYourName);
 
         // itt adja meg a játékos a nevét
         JTextField nameField = new JTextField();
         nameField.setBounds(235, 340, 200, 40);
-        characterChooseFrame.add(nameField);
+        background.add(nameField);
 
         // play gomb, megnyomására indul a játék
         JButton play = new JButton();
@@ -132,16 +138,16 @@ public class Characters {
         play.setBounds(285, 400, 100, 40);
         play.setVisible(true);
         play.setOpaque(true);
-        characterChooseFrame.add(play);
+        background.add(play);
 
         play.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 String playerName = nameField.getText();
                 if (nameField.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Nem írtad be a neved!");
+                    JOptionPane.showMessageDialog(null, "You don't write your name!");
                 }
                 else if (characterNumber == 0) {
-                    JOptionPane.showMessageDialog(null, "Nem választottál karaktert!");
+                    JOptionPane.showMessageDialog(null, "You don't choose a character!");
                 }
                 else if (!nameField.getText().isEmpty() && characterNumber != 0) {
                     playing_field = new Playing_field(playerName);
