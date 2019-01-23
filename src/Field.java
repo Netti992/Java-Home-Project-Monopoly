@@ -11,6 +11,8 @@ public abstract class Field extends JLabel{
 
     public abstract void activityEvent(Player player);
 
+    Cards cards = new Cards();
+
     // pozíció beállítása: körben menjen a pálya
     public void position(int i) {
         if (place >= 0 && place <= 10) {

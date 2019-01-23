@@ -152,7 +152,6 @@ public class Characters {
                 else if (!nameField.getText().isEmpty() && characterNumber != 0) {
                     playing_field = new Playing_field(playerName);
                     characterChooseFrame.dispose();
-                    //Playing_field.humanPlayer.whoTurn += 1;
                 }
             }
         });

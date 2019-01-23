@@ -6,6 +6,8 @@ public class Vacation extends Field {
     }
 
     public void activityEvent(Player player) {
-        JOptionPane.showMessageDialog(null, "Nyaralsz");
+        JOptionPane.showMessageDialog(null, "Nyaralsz" +
+                ", két körből kimaradsz!");
+        player.whoTurn += 2;
     }
 }

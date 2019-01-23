@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Player extends JLabel {
     boolean haveHouse = true;
 
+    boolean haveCard = false;
     int money = 0;
     int loan = 0;
     int actualPlace = 0;
@@ -21,6 +22,7 @@ public class Player extends JLabel {
     boolean haveWashingMachine = false;
     boolean haveVacumCleaner = false;
     boolean haveLaptop = false;
+
     Playing_field playing_field;
 
     boolean haveLoan = false;
@@ -40,14 +42,7 @@ public class Player extends JLabel {
         Start.newRound(this);
         this.setBounds(playing_field.playingField[actualPlace].getX(), playing_field.playingField[actualPlace].getY(), 44, 44);
 
-           //playing_field.playingField[actualPlace].activityEvent(this);
-
-
-        //Bank.bankEvent();
-        //Electric_shop.electric(this);
-        //furnosher(this);
-        //Real_estate_agency.realEstateEvent();
-        System.out.println("ActualPlace: " + actualPlace);
+           playing_field.playingField[actualPlace].activityEvent(this);
     }
 
     // ha a játékos pénzt kap
@@ -61,7 +56,7 @@ public class Player extends JLabel {
     }
 
     // ha a játékos kölcsönt vesz fel, a loan -hoz adja
-    public void getLoan(int newLoan) {
+    public void setLoan(int newLoan) {
         loan += newLoan;
     }
 
@@ -72,17 +67,21 @@ public class Player extends JLabel {
 
     // ha a játékosnak kölcsöne van, minden körben visszafizetheti az egészet, vagy kötelezően az 5%-t
     public void payLoan() {
+        int loanFromMoney;
         if (getLoan() > 20) {
             loan *= 0.95;
+            loanFromMoney = (int)(loan * 0.95);
+            money -= loanFromMoney;
         } else {
             loan = 0;
+            money -= getLoan();
             setHaveLoan(false);
         }
     }
 
     // egyszer egyik, azután a másik játékos lép
     public void nextPlayer() {
-        if (whoTurn == 0) {
+        if (whoTurn <= 0) {
             meTurn = true;
         }
         else meTurn = false;

@@ -15,6 +15,7 @@ public class Playing_field extends JFrame {
     JButton humanButton;
     JButton computerButton;
     public String playerName;
+
     public JButton laptop1;
     public JButton laptop2;
     public JButton vacumCleaner1;
@@ -26,6 +27,20 @@ public class Playing_field extends JFrame {
     public JButton radio1;
     public JButton radio2;
     public JButton cupboard1;
+    public JButton cupboard2;
+    public JButton bed1;
+    public JButton bed2;
+    public JButton kitchen1;
+    public JButton kitchen2;
+    public JButton armChair1;
+    public JButton armChair2;
+    public JButton couch1;
+    public JButton couch2;
+    public JButton house1;
+    public JButton house2;
+
+    public String cardString;
+    public JButton cardsButton;
 
 
     public Playing_field(String playerName) {
@@ -159,7 +174,7 @@ public class Playing_field extends JFrame {
         radio1.setOpaque(true);
         getContentPane().add(radio1);
 
-        JButton cupboard1 = new JButton();
+        cupboard1 = new JButton();
         if (!humanPlayer.haveCupBoard) {
             cupboard1.setIcon(new ImageIcon("./szurkecupboard.png"));
         } else {
@@ -170,7 +185,7 @@ public class Playing_field extends JFrame {
         cupboard1.setOpaque(true);
         getContentPane().add(cupboard1);
 
-        JButton bed1 = new JButton();
+        bed1 = new JButton();
         if (!humanPlayer.haveBed) {
             bed1.setIcon(new ImageIcon("./szurkebed.jpg"));
         } else {
@@ -181,7 +196,7 @@ public class Playing_field extends JFrame {
         bed1.setOpaque(true);
         getContentPane().add(bed1);
 
-        JButton kitchen1 = new JButton();
+        kitchen1 = new JButton();
         if (!humanPlayer.haveKitchenFurniture) {
             kitchen1.setIcon(new ImageIcon("./szurkekitchen.png"));
         } else {
@@ -192,7 +207,7 @@ public class Playing_field extends JFrame {
         kitchen1.setOpaque(true);
         getContentPane().add(kitchen1);
 
-        JButton armChair1 = new JButton();
+        armChair1 = new JButton();
         if (!humanPlayer.haveArmChair) {
             armChair1.setIcon(new ImageIcon("./szurkearmchair.jpg"));
         } else {
@@ -203,7 +218,7 @@ public class Playing_field extends JFrame {
         armChair1.setOpaque(true);
         getContentPane().add(armChair1);
 
-        JButton couch1 = new JButton();
+        couch1 = new JButton();
         if (!humanPlayer.haveCouch) {
             couch1.setIcon(new ImageIcon("./szurkecouch.jpg"));
         } else {
@@ -214,7 +229,7 @@ public class Playing_field extends JFrame {
         couch1.setOpaque(true);
         getContentPane().add(couch1);
 
-        JButton house1 = new JButton();
+        house1 = new JButton();
         if (!humanPlayer.haveHouse) {
             house1.setIcon(new ImageIcon("./szurkehaz.png"));
         } else {
@@ -271,7 +286,7 @@ public class Playing_field extends JFrame {
         vacumCleaner2.setOpaque(true);
         getContentPane().add(vacumCleaner2);
 
-        JButton washingmachine2 = new JButton();
+        washingmachine2 = new JButton();
         if (!computerPlayer.haveWashingMachine) {
             washingmachine2.setIcon(new ImageIcon("./szurkewashingmachine.jpg"));
         } else {
@@ -282,7 +297,7 @@ public class Playing_field extends JFrame {
         washingmachine2.setOpaque(true);
         getContentPane().add(washingmachine2);
 
-        JButton tv2 = new JButton();
+        tv2 = new JButton();
         if (!computerPlayer.haveTv) {
             tv2.setIcon(new ImageIcon("./szurketv.jpg"));
         } else {
@@ -304,7 +319,7 @@ public class Playing_field extends JFrame {
         radio2.setOpaque(true);
         getContentPane().add(radio2);
 
-        JButton cupboard2 = new JButton();
+        cupboard2 = new JButton();
         if (!computerPlayer.haveCupBoard) {
             cupboard2.setIcon(new ImageIcon("./szurkecupboard.png"));
         } else {
@@ -315,7 +330,7 @@ public class Playing_field extends JFrame {
         cupboard2.setOpaque(true);
         getContentPane().add(cupboard2);
 
-        JButton bed2 = new JButton();
+        bed2 = new JButton();
         if (!computerPlayer.haveBed) {
             bed2.setIcon(new ImageIcon("./szurkebed.jpg"));
         } else {
@@ -326,7 +341,7 @@ public class Playing_field extends JFrame {
         bed2.setOpaque(true);
         getContentPane().add(bed2);
 
-        JButton kitchen2 = new JButton();
+        kitchen2 = new JButton();
         if (!computerPlayer.haveKitchenFurniture) {
             kitchen2.setIcon(new ImageIcon("./szurkekitchen.png"));
         } else {
@@ -337,7 +352,7 @@ public class Playing_field extends JFrame {
         kitchen2.setOpaque(true);
         getContentPane().add(kitchen2);
 
-        JButton armChair2 = new JButton();
+        armChair2 = new JButton();
         if (!computerPlayer.haveArmChair) {
             armChair2.setIcon(new ImageIcon("./szurkearmchair.jpg"));
         } else {
@@ -348,7 +363,7 @@ public class Playing_field extends JFrame {
         armChair2.setOpaque(true);
         getContentPane().add(armChair2);
 
-        JButton couch2 = new JButton();
+        couch2 = new JButton();
         if (!computerPlayer.haveCouch) {
             couch2.setIcon(new ImageIcon("./szurkecouch.jpg"));
         } else {
@@ -360,7 +375,7 @@ public class Playing_field extends JFrame {
         getContentPane().add(couch2);
 
 
-        JButton house2 = new JButton();
+        house2 = new JButton();
         if (!computerPlayer.haveHouse) {
             house2.setIcon(new ImageIcon("./szurkehaz.png"));
         } else {
@@ -382,29 +397,85 @@ public class Playing_field extends JFrame {
         // mindig az dob, akinek a meTurn true, a whoTurn-ből elvesz, vagy kivon
         dice.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (humanPlayer.meTurn) {
+                if (humanPlayer.meTurn && !computerPlayer.meTurn) {
                     int dice = throwing();
                     humanPlayer.moving(dice);
                     humanPlayer.whoTurn += 1;
                     computerPlayer.whoTurn -= 1;
                     humanPlayer.nextPlayer();
                     computerPlayer.nextPlayer();
-                    System.out.println("human: " + humanPlayer.whoTurn);
-                    System.out.println("computer: " + computerPlayer.whoTurn);
+                    humanPlayer.haveCard = false;
                     refresh(humanPlayer);
                     repaint();
                 }
-                else if (computerPlayer.meTurn) {
-                    int dice = Playing_field.throwing();
+                else if (computerPlayer.meTurn && !humanPlayer.meTurn) {
+                    int dice = throwing();
                     computerPlayer.moving(dice);
                     computerPlayer.whoTurn += 1;
                     humanPlayer.whoTurn -= 1;
                     humanPlayer.nextPlayer();
                     computerPlayer.nextPlayer();
-                    System.out.println("human: " + humanPlayer.whoTurn);
-                    System.out.println("computer:" + computerPlayer.whoTurn);
+                    computerPlayer.haveCard = false;
                     refresh(computerPlayer);
                     repaint();
+                }
+                else if (humanPlayer.meTurn && computerPlayer.meTurn) {
+                    humanPlayer.whoTurn += 1;
+                    computerPlayer.whoTurn += 1;
+                    if (humanPlayer.whoTurn > computerPlayer.whoTurn) {
+                        int dice = throwing();
+                        computerPlayer.moving(dice);
+                        computerPlayer.whoTurn += 1;
+                        humanPlayer.whoTurn -= 1;
+                        humanPlayer.nextPlayer();
+                        computerPlayer.nextPlayer();
+                        computerPlayer.haveCard = false;
+                        refresh(computerPlayer);
+                        repaint();
+                    }
+                    else if (humanPlayer.whoTurn < computerPlayer.whoTurn) {
+                        int dice = throwing();
+                        humanPlayer.moving(dice);
+                        humanPlayer.whoTurn += 1;
+                        computerPlayer.whoTurn -= 1;
+                        humanPlayer.nextPlayer();
+                        computerPlayer.nextPlayer();
+                        humanPlayer.haveCard = false;
+                        refresh(humanPlayer);
+                        repaint();
+                    }
+                    else if(humanPlayer.whoTurn == computerPlayer.whoTurn) {
+                        humanPlayer.whoTurn -= 1;
+                    }
+                }
+                else if (!humanPlayer.meTurn && !computerPlayer.meTurn) {
+                        humanPlayer.whoTurn -= 1;
+                        computerPlayer.whoTurn -= 1;
+                    if (humanPlayer.whoTurn > computerPlayer.whoTurn) {
+                        int dice = throwing();
+                        computerPlayer.moving(dice);
+                        computerPlayer.whoTurn += 1;
+                        humanPlayer.whoTurn -= 1;
+                        humanPlayer.nextPlayer();
+                        computerPlayer.nextPlayer();
+                        computerPlayer.haveCard = false;
+                        refresh(computerPlayer);
+                        repaint();
+                    }
+                    else if (humanPlayer.whoTurn < computerPlayer.whoTurn) {
+                        int dice = throwing();
+                        humanPlayer.moving(dice);
+                        humanPlayer.whoTurn += 1;
+                        computerPlayer.whoTurn -= 1;
+                        humanPlayer.nextPlayer();
+                        computerPlayer.nextPlayer();
+                        humanPlayer.haveCard = false;
+                        refresh(humanPlayer);
+                        repaint();
+                    }
+                    else  if (humanPlayer.whoTurn == computerPlayer.whoTurn) {
+                            computerPlayer.whoTurn -= 1;
+                    }
                 }
             }
         });
@@ -418,12 +489,17 @@ public class Playing_field extends JFrame {
         getContentPane().add(text);
 
         // kártyák gombja, ha a megfelelő mezőre lépek, kiírja a kártya szövegét
-        JButton cards = new JButton("");
-        cards.setIcon(new ImageIcon("./card.jpg"));
-        cards.setBounds(800, 310, 120, 190);
-        cards.setVisible(true);
-        cards.setOpaque(true);
-        getContentPane().add(cards);
+        cardsButton = new JButton();
+        if (humanPlayer.haveCard || computerPlayer.haveCard) {
+            cardsButton.setText("Van kártyád");
+        }
+        if (!humanPlayer.haveCard || !computerPlayer.haveCard){
+            cardsButton.setIcon(new ImageIcon("./card.jpg"));
+        }
+        cardsButton.setBounds(800, 310, 120, 190);
+        cardsButton.setVisible(true);
+        cardsButton.setOpaque(true);
+        getContentPane().add(cardsButton);
 
         makeThePlayingField();
         repaint();
@@ -571,6 +647,13 @@ public class Playing_field extends JFrame {
         computerPlayerLabel.setText("<html><font color=black> Money: </font>" + computerPlayer.money +
                 "<br><font color=black> Loan: </font>" + computerPlayer.loan + "</html>");
 
+        if (humanPlayer.haveCard || computerPlayer.haveCard) {
+            cardsButton.setText("Van kártyád!");
+        }
+        if (!humanPlayer.haveCard || !computerPlayer.haveCard){
+            cardsButton.setIcon(new ImageIcon("./card.jpg"));
+        }
+
         if (humanPlayer.meTurn) {
             humanButton.setBackground(new Color(154,205,50));
         } else {
@@ -613,10 +696,22 @@ public class Playing_field extends JFrame {
             washingmachine1.setIcon(new ImageIcon("./washingmachine.jpg"));
         }
 
+        if (!computerPlayer.haveWashingMachine) {
+            washingmachine2.setIcon(new ImageIcon("./szurkewashingmachine.jpg"));
+        } else {
+            washingmachine2.setIcon(new ImageIcon("./washingmachine.jpg"));
+        }
+
         if (!humanPlayer.haveTv) {
             tv1.setIcon(new ImageIcon("./szurketv.jpg"));
         } else {
             tv1.setIcon(new ImageIcon("./tv.jpg"));
+        }
+
+        if (!computerPlayer.haveTv) {
+            tv2.setIcon(new ImageIcon("./szurketv.jpg"));
+        } else {
+            tv2.setIcon(new ImageIcon("./tv.jpg"));
         }
 
         if (!humanPlayer.haveRadio) {
@@ -629,6 +724,78 @@ public class Playing_field extends JFrame {
             radio2.setIcon(new ImageIcon("./szurkeradio.jpg"));
         } else {
             radio2.setIcon(new ImageIcon("./radio.jpg"));
+        }
+
+        if (!humanPlayer.haveCupBoard) {
+            cupboard1.setIcon(new ImageIcon("./szurkecupboard.png"));
+        } else {
+            cupboard1.setIcon(new ImageIcon("./cupboard.png"));
+        }
+
+        if (!computerPlayer.haveCupBoard) {
+            cupboard2.setIcon(new ImageIcon("./szurkecupboard.png"));
+        } else {
+            cupboard2.setIcon(new ImageIcon("./cupboard.png"));
+        }
+
+        if (!humanPlayer.haveBed) {
+            bed1.setIcon(new ImageIcon("./szurkebed.jpg"));
+        } else {
+            bed1.setIcon(new ImageIcon("./bed.jpg"));
+        }
+
+        if (!computerPlayer.haveBed) {
+            bed2.setIcon(new ImageIcon("./szurkebed.jpg"));
+        } else {
+            bed2.setIcon(new ImageIcon("./bed.jpg"));
+        }
+
+        if (!humanPlayer.haveKitchenFurniture) {
+            kitchen1.setIcon(new ImageIcon("./szurkekitchen.png"));
+        } else {
+            kitchen1.setIcon(new ImageIcon("./kitchen.png"));
+        }
+
+        if (!computerPlayer.haveKitchenFurniture) {
+            kitchen2.setIcon(new ImageIcon("./szurkekitchen.png"));
+        } else {
+            kitchen2.setIcon(new ImageIcon("./kitchen.png"));
+        }
+
+        if (!humanPlayer.haveArmChair) {
+            armChair1.setIcon(new ImageIcon("./szurkearmchair.jpg"));
+        } else {
+            armChair1.setIcon(new ImageIcon("./armchair.jpg"));
+        }
+
+        if (!computerPlayer.haveArmChair) {
+            armChair2.setIcon(new ImageIcon("./szurkearmchair.jpg"));
+        } else {
+            armChair2.setIcon(new ImageIcon("./armchair.jpg"));
+        }
+
+        if (!humanPlayer.haveCouch) {
+            couch1.setIcon(new ImageIcon("./szurkecouch.jpg"));
+        } else {
+            couch1.setIcon(new ImageIcon("./couch.jpg"));
+        }
+
+        if (!computerPlayer.haveCouch) {
+            couch2.setIcon(new ImageIcon("./szurkecouch.jpg"));
+        } else {
+            couch2.setIcon(new ImageIcon("./couch.jpg"));
+        }
+
+        if (!humanPlayer.haveHouse) {
+            house1.setIcon(new ImageIcon("./szurkehaz.png"));
+        } else {
+            house1.setIcon(new ImageIcon("./haz.png"));
+        }
+
+        if (!computerPlayer.haveHouse) {
+            house2.setIcon(new ImageIcon("./szurkehaz.png"));
+        } else {
+            house2.setIcon(new ImageIcon("./haz.png"));
         }
     }
 }

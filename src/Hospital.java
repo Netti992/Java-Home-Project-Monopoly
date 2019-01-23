@@ -6,6 +6,7 @@ public class Hospital extends Field {
     }
 
     public void activityEvent(Player player) {
-            JOptionPane.showMessageDialog(null, "Hospital");
+        JOptionPane.showMessageDialog(null, "Hospital: kimaradsz egy körből!");
+        player.whoTurn +=1;
     }
 }

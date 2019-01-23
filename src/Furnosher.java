@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 public class Furnosher extends Field {
+    JLabel background;
 
     public Furnosher(int x) {
         super(x);
@@ -19,6 +20,7 @@ public class Furnosher extends Field {
         furnosherFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         furnosherFrame.setResizable(true);
         furnosherFrame.setBackground(Color.white);
+
 
         // Frame magyarázata
         JLabel furnosherText = new JLabel("<html><font color=black><Strong>Itt vásárolhatsz bútorokat.&nbsp</Strong></font>" +
@@ -37,15 +39,19 @@ public class Furnosher extends Field {
         couchButton.setBounds(90, 90, 200, 40);
         furnosherFrame.add(couchButton);
         furnosherFrame.setVisible(true);
+        couchButton.setFocusable(false);
 
         couchButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveCouch) {
+                    JOptionPane.showMessageDialog(null, "Már van kanapéd!");
+                }
+                if (player.haveHouse && !player.haveCouch) {
                     player.lostMoney(5000);
                     player.haveCouch = true;
                     furnosherFrame.dispose();
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
@@ -58,15 +64,19 @@ public class Furnosher extends Field {
         armChairButton.setBounds(90, 140, 200, 40);
         furnosherFrame.add(armChairButton);
         furnosherFrame.setVisible(true);
+        armChairButton.setFocusable(false);
 
         armChairButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveArmChair) {
+                    JOptionPane.showMessageDialog(null, "Már van foteled!");
+                }
+                if (player.haveHouse && !player.haveArmChair) {
                     player.lostMoney(2000);
                     player.haveArmChair = true;
                     furnosherFrame.dispose();
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
@@ -79,15 +89,19 @@ public class Furnosher extends Field {
         kitchenFurnitureButton.setBounds(90, 190, 200, 40);
         furnosherFrame.add(kitchenFurnitureButton);
         furnosherFrame.setVisible(true);
+        kitchenFurnitureButton.setFocusable(false);
 
         kitchenFurnitureButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveKitchenFurniture) {
+                    JOptionPane.showMessageDialog(null, "Már van konyhabútorod!");
+                }
+                if (player.haveHouse && !player.haveKitchenFurniture) {
                     player.lostMoney(6000);
                     player.haveKitchenFurniture = true;
                     furnosherFrame.dispose();
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
@@ -100,15 +114,19 @@ public class Furnosher extends Field {
         bedButton.setBounds(90, 240, 200, 40);
         furnosherFrame.add(bedButton);
         furnosherFrame.setVisible(true);
+        bedButton.setFocusable(false);
 
         bedButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveBed) {
+                    JOptionPane.showMessageDialog(null, "Már van ágyad!");
+                }
+                if (player.haveHouse && !player.haveBed) {
                     player.lostMoney(4000);
                     player.haveBed = true;
                     furnosherFrame.dispose();
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
@@ -121,19 +139,35 @@ public class Furnosher extends Field {
         cupBoardButton.setBounds(90, 290, 200, 40);
         furnosherFrame.add(cupBoardButton);
         furnosherFrame.setVisible(true);
+        cupBoardButton.setFocusable(false);
 
         cupBoardButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveCupBoard) {
+                    JOptionPane.showMessageDialog(null, "Már van szekrényed!");
+                }
+                if (player.haveHouse && !player.haveCupBoard) {
                     player.lostMoney(5000);
                     player.haveCupBoard = true;
                     furnosherFrame.dispose();
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
             }
         });
+
+        background = new JLabel();
+        background.setSize(400, 400);
+        background.setIcon(new ImageIcon("./background.jpg"));
+        background.setVisible(true);
+        background.setOpaque(true);
+        furnosherFrame.add(background);
+
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - furnosherFrame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - furnosherFrame.getHeight()) / 2);
+        furnosherFrame.setLocation(x, y);
     };
     }

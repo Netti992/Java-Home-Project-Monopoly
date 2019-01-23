@@ -6,7 +6,9 @@ public class Prison extends Field {
     }
 
     public void activityEvent(Player player) {
-            JOptionPane.showMessageDialog(null, "Börtönben vagy, fizess 1000-t!");
+            JOptionPane.showMessageDialog(null, "Börtönben vagy, fizess 500-t, és kimaradsz" +
+                    "két körből!");
+            player.whoTurn += 2;
             player.lostMoney(500);
         }
 }

@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 public class Electric_shop extends Field {
+    JLabel background;
 
     public Electric_shop(int x) {
         super(x);
@@ -17,15 +18,13 @@ public class Electric_shop extends Field {
     @Override
     public void activityEvent(Player player) {
 
-    }
-
-    public void electric(Player player) {
         JDialog electricShopFrame = new JDialog();
         electricShopFrame.setSize(400, 400);
         electricShopFrame.setLayout(null);
         electricShopFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         electricShopFrame.setResizable(true);
         electricShopFrame.setBackground(Color.white);
+
 
         // Frame magyarázata
         JLabel electricShopText = new JLabel("<html><font color=black><Strong>Itt vásárolhatsz electronikai termékeket.&nbsp</Strong></font>" +
@@ -45,15 +44,19 @@ public class Electric_shop extends Field {
         electricShopFrame.add(radioButton);
         electricShopFrame.setVisible(true);
         radioButton.setFocusable(false);
+        radioButton.setFocusable(false);
 
         radioButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveRadio) {
+                    JOptionPane.showMessageDialog(null, "Már van rádiód!");
+                }
+                if (player.haveHouse && !player.haveRadio) {
                     player.lostMoney(500);
                     player.haveRadio = true;
                     electricShopFrame.dispose();
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
@@ -67,16 +70,20 @@ public class Electric_shop extends Field {
         electricShopFrame.add(tvButton);
         electricShopFrame.setVisible(true);
         tvButton.setFocusable(false);
+        tvButton.setFocusable(false);
 
         tvButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveTv) {
+                    JOptionPane.showMessageDialog(null, "Már van tv-d!");
+                }
+                if (player.haveHouse && !player.haveTv) {
                     player.lostMoney(6000);
                     player.haveTv = true;
                     electricShopFrame.dispose();
                     System.out.println(player.haveTv);
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
@@ -90,15 +97,19 @@ public class Electric_shop extends Field {
         electricShopFrame.add(washingMachineButton);
         electricShopFrame.setVisible(true);
         washingMachineButton.setFocusable(false);
+        washingMachineButton.setFocusable(false);
 
         washingMachineButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveWashingMachine) {
+                    JOptionPane.showMessageDialog(null, "Már van mosógéped!");
+                }
+                if (player.haveHouse && !player.haveWashingMachine) {
                     player.lostMoney(6000);
                     player.haveWashingMachine = true;
                     electricShopFrame.dispose();
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
@@ -112,15 +123,19 @@ public class Electric_shop extends Field {
         electricShopFrame.add(vacuumCleanerButton);
         electricShopFrame.setVisible(true);
         vacuumCleanerButton.setFocusable(false);
+        vacuumCleanerButton.setFocusable(false);
 
         vacuumCleanerButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveVacumCleaner) {
+                    JOptionPane.showMessageDialog(null, "Már van porszívód!");
+                }
+                if (player.haveHouse && !player.haveVacumCleaner) {
                     player.lostMoney(3000);
                     player.haveVacumCleaner = true;
                     electricShopFrame.dispose();
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
@@ -134,21 +149,37 @@ public class Electric_shop extends Field {
         electricShopFrame.add(laptopButton);
         electricShopFrame.setVisible(true);
         laptopButton.setFocusable(false);
+        laptopButton.setFocusable(false);
 
         laptopButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (player.haveHouse) {
+                if (player.haveLaptop) {
+                    JOptionPane.showMessageDialog(null, "Már van laptopod!");
+                }
+                if (player.haveHouse && !player.haveLaptop) {
                     player.lostMoney(10000);
                     player.haveLaptop = true;
                     electricShopFrame.dispose();
                     System.out.println(player.haveLaptop);
                 }
-                else {
+                if (!player.haveHouse) {
                     JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
                             "itt vásárolni");
                 }
             }
         });
+
+        background = new JLabel();
+        background.setSize(400, 400);
+        background.setIcon(new ImageIcon("./background.jpg"));
+        background.setVisible(true);
+        background.setOpaque(true);
+        electricShopFrame.add(background);
+
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - electricShopFrame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - electricShopFrame.getHeight()) / 2);
+        electricShopFrame.setLocation(x, y);
 
     }
 }
