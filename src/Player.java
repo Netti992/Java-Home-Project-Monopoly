@@ -6,7 +6,7 @@ public class Player extends JLabel {
     boolean youLostAllMoney = false;
 
     boolean haveInsurance = false;
-    boolean haveHouse = true;
+    boolean haveHouse = false;
 
     boolean haveCard = false;
     int money = 2000;
@@ -15,16 +15,18 @@ public class Player extends JLabel {
     int whoTurn = 0;
     boolean meTurn = true;
 
-    boolean haveCouch = true;
-    boolean haveArmChair = true;
-    boolean haveKitchenFurniture = true;
-    boolean haveBed = true;
-    boolean haveCupBoard = true;
-    boolean haveRadio = true;
-    boolean haveTv = true;
-    boolean haveWashingMachine = true;
-    boolean haveVacumCleaner = true;
-    boolean haveLaptop = true;
+    boolean haveCouch = false;
+    boolean haveArmChair = false;
+    boolean haveKitchenFurniture = false;
+    boolean haveBed = false;
+    boolean haveCupBoard = false;
+    boolean haveRadio = false;
+    boolean haveTv = false;
+    boolean haveWashingMachine = false;
+    boolean haveVacumCleaner = false;
+    boolean haveLaptop = false;
+
+    String cardString = "";
 
     PlayingField playing_field;
 
@@ -40,7 +42,7 @@ public class Player extends JLabel {
 
     // amennyit dob, annyit megy előre
     public void moving(int dice) {
-        actualPlace += dice;
+        actualPlace += 1;
 
         Start.newRound(this);
         this.setBounds(playing_field.playingField[actualPlace].getX(), playing_field.playingField[actualPlace].getY(), 44, 44);
@@ -123,6 +125,14 @@ public class Player extends JLabel {
 
     public boolean getHaveInsurance(boolean haveInsurance) {
         return haveInsurance;
+    }
+
+    public void setHaveCard(boolean haveCard) {
+        this.haveCard = haveCard;
+    }
+
+    public boolean getHaveCard() {
+        return haveCard;
     }
 }
 

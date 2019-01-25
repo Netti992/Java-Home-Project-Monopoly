@@ -2,50 +2,52 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cards extends JLabel {
+public class Cards {
 
-    int cardNumber = (int) Math.floor(Math.random() * (15 - 1) + 1);
-    String cardString = "Nincs kártyád";
+
+    String cardString;
 
     public void randomCard(Player player) {
+        int cardNumber = (int) Math.floor(Math.random() * (15 - 1) + 1);
+
         if (cardNumber == 1) {
-            cardString = "Új cipőt kell venned, fizess 50-t!";
+            cardString = "You have to buy shoes, pay 50!";
             player.lostMoney(50);
         }
         else if (cardNumber == 2) {
-            cardString = "Elromlott a porszívód, a javíttatására fizess 100-t!";
+            cardString = "Your vacuum cleaner went wrong, to repair pay 100!";
             player.lostMoney(100);
         }
         else if (cardNumber == 3) {
-            cardString = "Jutalmat kaptál: 200-t!";
+            cardString = "You got reward: 200!";
             player.getMoney(200);
         }
         else if (cardNumber == 4) {
-            cardString = "Nyertél a tombolán 500-t!";
+            cardString = "You win in the raffle: 500!";
             player.getMoney(500);
         }
         else if (cardNumber == 5) {
-            cardString = "Megbetegedtél, gyógyszert kell venned, fizess 100-t!";
+            cardString = "You are sick, you have to buy a medicine, pay 100!";
             player.lostMoney(100);
         }
         else if (cardNumber == 6) {
-            cardString = "Elmentél nyaralni, fizess 800-t!";
+            cardString = "You are on a vacation, pay 800!";
             player.lostMoney(800);
         }
         else if (cardNumber == 7) {
-            cardString = "Az év dolgozója lettél, jutalmad 1000!";
+            cardString = "You are the best college in your job, your reward is 1000!";
             player.getMoney(1000);
         }
         else if (cardNumber == 8) {
-            cardString = "Bulizni mentél a hétvégén, fizess 200-t!";
+            cardString = "You were in a party at the weekend, pay 200!";
             player.lostMoney(200);
         }
         else if (cardNumber == 9) {
-            cardString = "Vettél egy új telefont, fizess 700-t!";
+            cardString = "You bought a new phone, pay 700!";
             player.lostMoney(700);
         }
         else if (cardNumber == 10) {
-            cardString = "Születésnapod van, a családtól kaptál 1000-t!";
+            cardString = "You have birthday, you got 1000!";
             player.getMoney(1000);
         }
         else if (cardNumber == 11) {

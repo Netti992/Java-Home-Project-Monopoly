@@ -42,9 +42,14 @@ public class Lottery extends Field{
         int y = (int) ((dimension.getHeight() - lotteryFrame.getHeight()) / 2);
         lotteryFrame.setLocation(x, y);
 
-        player.haveCard = true;
-        player.lostMoney(50);
         cards.randomCard(player);
+        player.setHaveCard(true);
+        player.cardString = cards.cardString;
+
+        //player.haveCard = true;
+        player.lostMoney(50);
+
+        System.out.println("belső: " + player.haveCard);
 
         lotteryFrame.setVisible(true);
 

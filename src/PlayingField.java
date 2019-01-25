@@ -41,7 +41,7 @@ public class PlayingField extends JFrame {
     public JButton house1;
     public JButton house2;
 
-    public String cardString;
+
     public JButton cardsButton;
 
 
@@ -400,6 +400,8 @@ public class PlayingField extends JFrame {
         dice.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 refresh(humanPlayer);
+                humanPlayer.cardString = "";
+                computerPlayer.cardString = "";
                 if (humanPlayer.meTurn && !computerPlayer.meTurn) {
                     int dice = throwing();
                     humanPlayer.moving(dice);
@@ -647,6 +649,20 @@ public class PlayingField extends JFrame {
     // frissítések
     public void refresh(Player player) {
 
+        System.out.println("refreshben: " + humanPlayer.haveCard);
+        System.out.println("refreshben:" + computerPlayer.haveCard);
+
+        System.out.println("Player card: " + player.cardString);
+
+        if (!(player.cardString.length() > 0)){
+            cardsButton.setIcon(new ImageIcon("./card.jpg"));
+        }
+        else{
+            cardsButton.setIcon(null);
+            cardsButton.setText(player.cardString);
+            cardsButton.setBounds(800, 310, 120, 190);
+        }
+
         GameOver gameOver = new GameOver(player);
 
         gameOver.nullMoney(player);
@@ -656,16 +672,6 @@ public class PlayingField extends JFrame {
                 "<br><font color=black> Loan: </font>" + humanPlayer.loan + "</html>");
         computerPlayerLabel.setText("<html><font color=black> Money: </font>" + computerPlayer.money +
                 "<br><font color=black> Loan: </font>" + computerPlayer.loan + "</html>");
-
-        if (!humanPlayer.haveCard){
-            cardsButton.setIcon(new ImageIcon("./card.jpg"));
-        }
-        else cardsButton.setText("String");
-
-        if (!computerPlayer.haveCard){
-            cardsButton.setIcon(new ImageIcon("./card.jpg"));
-        }
-        else cardsButton.setText("String");
 
 
         if (humanPlayer.meTurn) {

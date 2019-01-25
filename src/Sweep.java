@@ -42,11 +42,18 @@ public class Sweep extends Field {
         int x = (int) ((dimension.getWidth() - sweepFrame.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - sweepFrame.getHeight()) / 2);
         sweepFrame.setLocation(x, y);
-
-        player.haveCard = true;
-        player.lostMoney(50);
         cards.randomCard(player);
+        player.setHaveCard(true);
+
+        player.cardString = cards.cardString;
+
+        //player.haveCard = true;
+        player.lostMoney(50);
+
+        System.out.println("belső: " + player.haveCard);
 
         sweepFrame.setVisible(true);
+
+        System.out.println("Sweep: " +cards.cardString);
     }
 }
