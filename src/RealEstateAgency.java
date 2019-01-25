@@ -5,10 +5,10 @@ import java.awt.event.MouseEvent;
 
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
-public class Real_estate_agency extends Field {
+public class RealEstateAgency extends Field {
     JLabel background;
 
-    public Real_estate_agency(int x) {
+    public RealEstateAgency(int x) {
         super(x);
     }
 
@@ -23,8 +23,9 @@ public class Real_estate_agency extends Field {
             realEstateFrame.setBackground(Color.white);
 
             // Frame magyarázata
-            JLabel realEstateText = new JLabel("<html><font color=black><Strong>Ingatlanközvetítő, itt vehetsz lakást, ára: 60.000 Ft. Szeretnél vásárolni? &nbsp</Strong></font></html>");
-            Font myFont = new Font("Perpetua", Font.BOLD, 20);
+            JLabel realEstateText = new JLabel("<html><font color=black><Strong>You can buy a house. The price is: 60.000. " +
+                    "Would you like to buy? &nbsp</Strong></font></html>");
+            Font myFont = new Font(Font.DIALOG_INPUT, Font.BOLD, 20);
             realEstateText.setFont(myFont);
             realEstateText.setBounds(60, 20, 350, 100);
             realEstateText.setHorizontalAlignment(JLabel.CENTER);
@@ -35,7 +36,8 @@ public class Real_estate_agency extends Field {
             // igen
             JButton yesButton = new JButton();
             yesButton.setText("Yes");
-            yesButton.setBounds(90, 90, 100, 40);
+            yesButton.setBounds(90, 120, 100, 40);
+            yesButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
             realEstateFrame.add(yesButton);
             realEstateFrame.setVisible(true);
             yesButton.setFocusable(false);
@@ -43,7 +45,7 @@ public class Real_estate_agency extends Field {
             yesButton.addMouseListener(new MouseAdapter() {
                 public void mousePressed(MouseEvent e) {
                     if (player.haveHouse) {
-                        JOptionPane.showMessageDialog(null, "Már van házad!");
+                        JOptionPane.showMessageDialog(null, "You already have a house!");
                     }
                     if (!player.haveHouse) {
                         player.haveHouse = true;
@@ -57,7 +59,8 @@ public class Real_estate_agency extends Field {
     // nem
     JButton noButton = new JButton();
             noButton.setText("No");
-            noButton.setBounds(220, 90, 100, 40);
+            noButton.setBounds(220, 120, 100, 40);
+            noButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
             realEstateFrame.add(noButton);
             realEstateFrame.setVisible(true);
             noButton.setFocusable(false);

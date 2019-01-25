@@ -15,31 +15,32 @@ public class Bank extends Field {
     @Override
     public void activityEvent(Player player) {
         JDialog bankFrame = new JDialog();
-        bankFrame.setSize(400, 250);
+        bankFrame.setSize(450, 250);
         bankFrame.setLayout(null);
         bankFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         bankFrame.setResizable(true);
         bankFrame.setBackground(Color.white);
 
         // Frame magyarázata
-        JLabel bankText = new JLabel("<html><font color=black><Strong>Itt vehetsz fel hitelt. &nbsp</Strong></font>" +
-                "<font color=black>Mennyit szeretnél? &nbsp</font></html>");
-        Font myFont = new Font("Perpetua", Font.BOLD, 20);
+        JLabel bankText = new JLabel("<html><font color=black><Strong>Here you can get loan. </Strong></font>" +
+                "<font color=black>How many would you like? &nbsp</font></html>");
+        Font myFont = new Font(Font.DIALOG_INPUT, Font.BOLD, 20);
         bankText.setFont(myFont);
-        bankText.setBounds(90, 20, 250, 100);
+        bankText.setBounds(70, 10, 350, 100);
         bankText.setHorizontalAlignment(JLabel.CENTER);
         bankText.setVerticalAlignment(JLabel.TOP);
         bankText.setVisible(true);
         bankFrame.add(bankText);
 
         JTextField textField = new JTextField();
-        textField.setBounds(40, 80, 200, 40);
+        textField.setBounds(110, 80, 200, 40);
         bankFrame.add(textField);
 
 
         // felvesz gomb
-        JButton saveButton = new JButton("Felvesz");
-        saveButton.setBounds(50, 140, 80, 30);
+        JButton saveButton = new JButton("Refinancing");
+        saveButton.setBounds(70, 140, 130, 30);
+        saveButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         saveButton.setVisible(true);
         bankFrame.add(saveButton);
 
@@ -57,8 +58,9 @@ public class Bank extends Field {
         });
 
         // visszaad gomb
-        JButton giveBackButton = new JButton("Visszafizet");
-        giveBackButton.setBounds(150, 140, 80, 30);
+        JButton giveBackButton = new JButton("Retaliate");
+        giveBackButton.setBounds(210, 140, 130, 30);
+        giveBackButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         giveBackButton.setVisible(true);
         bankFrame.add(giveBackButton);
 
@@ -84,7 +86,7 @@ public class Bank extends Field {
         bankFrame.setLocation(x, y);
 
         background = new JLabel();
-        background.setSize(400, 250);
+        background.setSize(450, 250);
         background.setIcon(new ImageIcon("./background.jpg"));
         background.setVisible(true);
         background.setOpaque(true);

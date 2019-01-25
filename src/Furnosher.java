@@ -23,11 +23,11 @@ public class Furnosher extends Field {
 
 
         // Frame magyarázata
-        JLabel furnosherText = new JLabel("<html><font color=black><Strong>Itt vásárolhatsz bútorokat.&nbsp</Strong></font>" +
-                "<font color=black>Melyiket szeretnéd? &nbsp</font></html>");
-        Font myFont = new Font("Perpetua", Font.BOLD, 20);
+        JLabel furnosherText = new JLabel("<html><font color=black><Strong>Here you can buy furnitures. &nbsp</Strong></font>" +
+                "<font color=black>What would you want to buy? &nbsp</font></html>");
+        Font myFont = new Font(Font.DIALOG_INPUT, Font.BOLD, 20);
         furnosherText.setFont(myFont);
-        furnosherText.setBounds(50, 20, 350, 100);
+        furnosherText.setBounds(30, 10, 350, 100);
         furnosherText.setHorizontalAlignment(JLabel.CENTER);
         furnosherText.setVerticalAlignment(JLabel.TOP);
         furnosherText.setVisible(true);
@@ -37,6 +37,7 @@ public class Furnosher extends Field {
         JButton couchButton = new JButton();
         couchButton.setText("Couch");
         couchButton.setBounds(90, 90, 200, 40);
+        couchButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         furnosherFrame.add(couchButton);
         furnosherFrame.setVisible(true);
         couchButton.setFocusable(false);
@@ -44,7 +45,7 @@ public class Furnosher extends Field {
         couchButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveCouch) {
-                    JOptionPane.showMessageDialog(null, "Már van kanapéd!");
+                    JOptionPane.showMessageDialog(null, "You already have a couch!");
                 }
                 if (player.haveHouse && !player.haveCouch) {
                     player.lostMoney(5000);
@@ -52,8 +53,7 @@ public class Furnosher extends Field {
                     furnosherFrame.dispose();
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });
@@ -62,6 +62,7 @@ public class Furnosher extends Field {
         JButton armChairButton = new JButton();
         armChairButton.setText("Armchair");
         armChairButton.setBounds(90, 140, 200, 40);
+        armChairButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         furnosherFrame.add(armChairButton);
         furnosherFrame.setVisible(true);
         armChairButton.setFocusable(false);
@@ -69,7 +70,7 @@ public class Furnosher extends Field {
         armChairButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveArmChair) {
-                    JOptionPane.showMessageDialog(null, "Már van foteled!");
+                    JOptionPane.showMessageDialog(null, "You already have an armchair!");
                 }
                 if (player.haveHouse && !player.haveArmChair) {
                     player.lostMoney(2000);
@@ -77,8 +78,7 @@ public class Furnosher extends Field {
                     furnosherFrame.dispose();
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });
@@ -87,6 +87,7 @@ public class Furnosher extends Field {
         JButton kitchenFurnitureButton = new JButton();
         kitchenFurnitureButton.setText("Kitchen furniture");
         kitchenFurnitureButton.setBounds(90, 190, 200, 40);
+        kitchenFurnitureButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         furnosherFrame.add(kitchenFurnitureButton);
         furnosherFrame.setVisible(true);
         kitchenFurnitureButton.setFocusable(false);
@@ -94,7 +95,7 @@ public class Furnosher extends Field {
         kitchenFurnitureButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveKitchenFurniture) {
-                    JOptionPane.showMessageDialog(null, "Már van konyhabútorod!");
+                    JOptionPane.showMessageDialog(null, "You already have a kitchen furniture!");
                 }
                 if (player.haveHouse && !player.haveKitchenFurniture) {
                     player.lostMoney(6000);
@@ -102,8 +103,7 @@ public class Furnosher extends Field {
                     furnosherFrame.dispose();
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });
@@ -112,6 +112,7 @@ public class Furnosher extends Field {
         JButton bedButton = new JButton();
         bedButton.setText("Bed");
         bedButton.setBounds(90, 240, 200, 40);
+        bedButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         furnosherFrame.add(bedButton);
         furnosherFrame.setVisible(true);
         bedButton.setFocusable(false);
@@ -119,7 +120,7 @@ public class Furnosher extends Field {
         bedButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveBed) {
-                    JOptionPane.showMessageDialog(null, "Már van ágyad!");
+                    JOptionPane.showMessageDialog(null, "You already have a bed!");
                 }
                 if (player.haveHouse && !player.haveBed) {
                     player.lostMoney(4000);
@@ -127,8 +128,7 @@ public class Furnosher extends Field {
                     furnosherFrame.dispose();
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });
@@ -137,6 +137,7 @@ public class Furnosher extends Field {
         JButton cupBoardButton = new JButton();
         cupBoardButton.setText("Cupboard");
         cupBoardButton.setBounds(90, 290, 200, 40);
+        cupBoardButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         furnosherFrame.add(cupBoardButton);
         furnosherFrame.setVisible(true);
         cupBoardButton.setFocusable(false);
@@ -144,7 +145,7 @@ public class Furnosher extends Field {
         cupBoardButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveCupBoard) {
-                    JOptionPane.showMessageDialog(null, "Már van szekrényed!");
+                    JOptionPane.showMessageDialog(null, "You already have a cupboard!");
                 }
                 if (player.haveHouse && !player.haveCupBoard) {
                     player.lostMoney(5000);
@@ -152,8 +153,7 @@ public class Furnosher extends Field {
                     furnosherFrame.dispose();
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });

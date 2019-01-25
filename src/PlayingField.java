@@ -2,8 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
-public class Playing_field extends JFrame {
+public class PlayingField extends JFrame {
+
     JLabel background;
     Field[] playingField;
     JLabel humanPlayerLabel;
@@ -43,7 +45,7 @@ public class Playing_field extends JFrame {
     public JButton cardsButton;
 
 
-    public Playing_field(String playerName) {
+    public PlayingField(String playerName) {
 
         this.playerName = playerName;
         setResizable(true);
@@ -397,6 +399,7 @@ public class Playing_field extends JFrame {
         // mindig az dob, akinek a meTurn true, a whoTurn-ből elvesz, vagy kivon
         dice.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+                refresh(humanPlayer);
                 if (humanPlayer.meTurn && !computerPlayer.meTurn) {
                     int dice = throwing();
                     humanPlayer.moving(dice);
@@ -491,7 +494,7 @@ public class Playing_field extends JFrame {
         // kártyák gombja, ha a megfelelő mezőre lépek, kiírja a kártya szövegét
         cardsButton = new JButton();
         if (humanPlayer.haveCard || computerPlayer.haveCard) {
-            cardsButton.setText("Van kártyád");
+            cardsButton.setText("Van kártyád!");
         }
         if (!humanPlayer.haveCard || !computerPlayer.haveCard){
             cardsButton.setIcon(new ImageIcon("./card.jpg"));
@@ -528,7 +531,8 @@ public class Playing_field extends JFrame {
         playingField[0].position(0);
 
         while(i < 30) {
-             int randomElement = (int) (Math.random()* (15 - 1) + 1);
+             int randomElement = new Random().nextInt(14) + 1;
+
 
         if (playingField[i] == null) {
 
@@ -539,7 +543,7 @@ public class Playing_field extends JFrame {
             }
 
             else if (randomElement == 2) {
-            Electric_shop electric_shop = new Electric_shop(0);
+            ElectricShop electric_shop = new ElectricShop(0);
             electric_shop.setIcon(new ImageIcon("./electric.jpg"));
             playingField[i] = electric_shop;
             }
@@ -575,7 +579,7 @@ public class Playing_field extends JFrame {
             }
 
             else if (randomElement == 8) {
-            Real_estate_agency real_estate_agency = new Real_estate_agency(0);
+            RealEstateAgency real_estate_agency = new RealEstateAgency(0);
             real_estate_agency.setIcon(new ImageIcon("./agency.jpg"));
             playingField[i] = real_estate_agency;
             }
@@ -642,17 +646,27 @@ public class Playing_field extends JFrame {
 
     // frissítések
     public void refresh(Player player) {
+
+        GameOver gameOver = new GameOver(player);
+
+        gameOver.nullMoney(player);
+        gameOver.youGetAllTheStuff(player);
+
         humanPlayerLabel.setText("<html><font color=black> Money: </font>" + humanPlayer.money +
                 "<br><font color=black> Loan: </font>" + humanPlayer.loan + "</html>");
         computerPlayerLabel.setText("<html><font color=black> Money: </font>" + computerPlayer.money +
                 "<br><font color=black> Loan: </font>" + computerPlayer.loan + "</html>");
 
-        if (humanPlayer.haveCard || computerPlayer.haveCard) {
-            cardsButton.setText("Van kártyád!");
-        }
-        if (!humanPlayer.haveCard || !computerPlayer.haveCard){
+        if (!humanPlayer.haveCard){
             cardsButton.setIcon(new ImageIcon("./card.jpg"));
         }
+        else cardsButton.setText("String");
+
+        if (!computerPlayer.haveCard){
+            cardsButton.setIcon(new ImageIcon("./card.jpg"));
+        }
+        else cardsButton.setText("String");
+
 
         if (humanPlayer.meTurn) {
             humanButton.setBackground(new Color(154,205,50));

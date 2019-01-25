@@ -1,33 +1,36 @@
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
 
 public class Player extends JLabel {
+
+    boolean youWin = false;
+    boolean youLostAllMoney = false;
+
+    boolean haveInsurance = false;
     boolean haveHouse = true;
 
     boolean haveCard = false;
-    int money = 0;
+    int money = 2000;
     int loan = 0;
     int actualPlace = 0;
     int whoTurn = 0;
     boolean meTurn = true;
 
-    boolean haveCouch = false;
-    boolean haveArmChair = false;
-    boolean haveKitchenFurniture = false;
-    boolean haveBed = false;
-    boolean haveCupBoard = false;
-    boolean haveRadio = false;
-    boolean haveTv = false;
-    boolean haveWashingMachine = false;
-    boolean haveVacumCleaner = false;
-    boolean haveLaptop = false;
+    boolean haveCouch = true;
+    boolean haveArmChair = true;
+    boolean haveKitchenFurniture = true;
+    boolean haveBed = true;
+    boolean haveCupBoard = true;
+    boolean haveRadio = true;
+    boolean haveTv = true;
+    boolean haveWashingMachine = true;
+    boolean haveVacumCleaner = true;
+    boolean haveLaptop = true;
 
-    Playing_field playing_field;
+    PlayingField playing_field;
 
     boolean haveLoan = false;
 
-    public Player(Playing_field playing_field) {
+    public Player(PlayingField playing_field) {
         this.playing_field = playing_field;
     }
 
@@ -37,7 +40,7 @@ public class Player extends JLabel {
 
     // amennyit dob, annyit megy előre
     public void moving(int dice) {
-        actualPlace += 1;
+        actualPlace += dice;
 
         Start.newRound(this);
         this.setBounds(playing_field.playingField[actualPlace].getX(), playing_field.playingField[actualPlace].getY(), 44, 44);
@@ -95,6 +98,13 @@ public class Player extends JLabel {
         }
     }
 
+    // ha van biztosítása, minden körben fizet 100-t
+    public void haveYouInsurance() {
+        if (getHaveInsurance(true)) {
+            lostMoney(100);
+        }
+    }
+
     public int getLoan() {
         return loan;
     }
@@ -109,6 +119,10 @@ public class Player extends JLabel {
 
     public boolean getHaveHouse(boolean haveHouse) {
         return haveHouse;
+    }
+
+    public boolean getHaveInsurance(boolean haveInsurance) {
+        return haveInsurance;
     }
 }
 

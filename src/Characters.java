@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -14,7 +13,7 @@ public class Characters {
     JButton character2;
     JButton character3;
     JButton character4;
-    Playing_field playing_field;
+    PlayingField playing_field;
 
     public Characters() {
 
@@ -42,7 +41,7 @@ public class Characters {
 
         // karakterválasztáshoz felirat
         JLabel addYourCharacter = new JLabel("<html><font color=black>Choose your character: </font></html>");
-        Font myFont = new Font(Font.DIALOG_INPUT, Font.BOLD, 18);
+        Font myFont = new Font(Font.DIALOG_INPUT, Font.BOLD, 20);
         addYourCharacter.setFont(myFont);
         addYourCharacter.setBounds(210, 110, 300, 100);
         addYourCharacter.setHorizontalAlignment(JLabel.CENTER);
@@ -121,7 +120,7 @@ public class Characters {
         // névválasztáshoz felirat
         JLabel addYourName = new JLabel("<html><font color=black>Write your name: </font></html>");
         addYourName.setFont(myFont);
-        addYourName.setBounds(250, 300, 200, 100);
+        addYourName.setBounds(220, 300, 240, 100);
         addYourName.setHorizontalAlignment(JLabel.CENTER);
         addYourName.setVerticalAlignment(JLabel.TOP);
         addYourName.setVisible(true);
@@ -130,12 +129,14 @@ public class Characters {
         // itt adja meg a játékos a nevét
         JTextField nameField = new JTextField();
         nameField.setBounds(235, 340, 200, 40);
+        nameField.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 18));
         background.add(nameField);
 
         // play gomb, megnyomására indul a játék
         JButton play = new JButton();
         play.setText("Play");
         play.setBounds(285, 400, 100, 40);
+        play.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 16));
         play.setVisible(true);
         play.setOpaque(true);
         background.add(play);
@@ -150,7 +151,7 @@ public class Characters {
                     JOptionPane.showMessageDialog(null, "You don't choose a character!");
                 }
                 else if (!nameField.getText().isEmpty() && characterNumber != 0) {
-                    playing_field = new Playing_field(playerName);
+                    playing_field = new PlayingField(playerName);
                     characterChooseFrame.dispose();
                 }
             }
@@ -174,7 +175,7 @@ public class Characters {
         character4.setBorder(null);
     }
 
-    public Playing_field getPlaying_field() {
+    public PlayingField getPlaying_field() {
         return playing_field;
     }
 }

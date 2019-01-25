@@ -41,6 +41,7 @@ public class Welcome {
         JButton next = new JButton();
         next.setText("Next");
         next.setBounds(230, 400, 100, 40);
+        next.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 16));
         next.setVisible(true);
         next.setOpaque(true);
         background.add(next);
@@ -56,6 +57,7 @@ public class Welcome {
         JButton rules = new JButton();
         rules.setText("Rules");
         rules.setBounds(340, 400, 100, 40);
+        rules.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 16));
         rules.setVisible(true);
         rules.setOpaque(true);
         rules.setFocusable(false);

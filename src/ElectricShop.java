@@ -8,10 +8,10 @@ import java.awt.event.MouseEvent;
 
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
-public class Electric_shop extends Field {
+public class ElectricShop extends Field {
     JLabel background;
 
-    public Electric_shop(int x) {
+    public ElectricShop(int x) {
         super(x);
     }
 
@@ -20,6 +20,7 @@ public class Electric_shop extends Field {
 
         JDialog electricShopFrame = new JDialog();
         electricShopFrame.setSize(400, 400);
+
         electricShopFrame.setLayout(null);
         electricShopFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         electricShopFrame.setResizable(true);
@@ -27,11 +28,11 @@ public class Electric_shop extends Field {
 
 
         // Frame magyarázata
-        JLabel electricShopText = new JLabel("<html><font color=black><Strong>Itt vásárolhatsz electronikai termékeket.&nbsp</Strong></font>" +
-                "<font color=black>Melyiket szeretnéd? &nbsp</font></html>");
-        Font myFont = new Font("Perpetua", Font.BOLD, 20);
+        JLabel electricShopText = new JLabel("<html><font color=black><Strong>Here you can buy electric things. " +
+                "What would you want to buy?&nbsp</Strong></font></html>");
+        Font myFont = new Font(Font.DIALOG_INPUT, Font.BOLD, 20);
         electricShopText.setFont(myFont);
-        electricShopText.setBounds(50, 20, 350, 100);
+        electricShopText.setBounds(30, 5, 350, 100);
         electricShopText.setHorizontalAlignment(JLabel.CENTER);
         electricShopText.setVerticalAlignment(JLabel.TOP);
         electricShopText.setVisible(true);
@@ -40,7 +41,8 @@ public class Electric_shop extends Field {
         // rádió
         JButton radioButton = new JButton();
         radioButton.setText("Radio");
-        radioButton.setBounds(90, 90, 200, 40);
+        radioButton.setBounds(90, 95, 200, 40);
+        radioButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         electricShopFrame.add(radioButton);
         electricShopFrame.setVisible(true);
         radioButton.setFocusable(false);
@@ -49,7 +51,7 @@ public class Electric_shop extends Field {
         radioButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveRadio) {
-                    JOptionPane.showMessageDialog(null, "Már van rádiód!");
+                    JOptionPane.showMessageDialog(null, "You already have a radio!");
                 }
                 if (player.haveHouse && !player.haveRadio) {
                     player.lostMoney(500);
@@ -57,8 +59,7 @@ public class Electric_shop extends Field {
                     electricShopFrame.dispose();
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });
@@ -66,7 +67,8 @@ public class Electric_shop extends Field {
         // tv
         JButton tvButton = new JButton();
         tvButton.setText("TV");
-        tvButton.setBounds(90, 140, 200, 40);
+        tvButton.setBounds(90, 145, 200, 40);
+        tvButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         electricShopFrame.add(tvButton);
         electricShopFrame.setVisible(true);
         tvButton.setFocusable(false);
@@ -75,7 +77,7 @@ public class Electric_shop extends Field {
         tvButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveTv) {
-                    JOptionPane.showMessageDialog(null, "Már van tv-d!");
+                    JOptionPane.showMessageDialog(null, "You already have a tv!");
                 }
                 if (player.haveHouse && !player.haveTv) {
                     player.lostMoney(6000);
@@ -84,8 +86,7 @@ public class Electric_shop extends Field {
                     System.out.println(player.haveTv);
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });
@@ -93,7 +94,8 @@ public class Electric_shop extends Field {
         // washingMachine
         JButton washingMachineButton = new JButton();
         washingMachineButton.setText("Washing machine");
-        washingMachineButton.setBounds(90, 190, 200, 40);
+        washingMachineButton.setBounds(90, 195, 200, 40);
+        washingMachineButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         electricShopFrame.add(washingMachineButton);
         electricShopFrame.setVisible(true);
         washingMachineButton.setFocusable(false);
@@ -102,7 +104,7 @@ public class Electric_shop extends Field {
         washingMachineButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveWashingMachine) {
-                    JOptionPane.showMessageDialog(null, "Már van mosógéped!");
+                    JOptionPane.showMessageDialog(null, "You already have a washing machine!");
                 }
                 if (player.haveHouse && !player.haveWashingMachine) {
                     player.lostMoney(6000);
@@ -110,8 +112,7 @@ public class Electric_shop extends Field {
                     electricShopFrame.dispose();
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });
@@ -119,7 +120,8 @@ public class Electric_shop extends Field {
         // vacuumCleaner
         JButton vacuumCleanerButton = new JButton();
         vacuumCleanerButton.setText("Vacuum Cleaner");
-        vacuumCleanerButton.setBounds(90, 240, 200, 40);
+        vacuumCleanerButton.setBounds(90, 245, 200, 40);
+        vacuumCleanerButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         electricShopFrame.add(vacuumCleanerButton);
         electricShopFrame.setVisible(true);
         vacuumCleanerButton.setFocusable(false);
@@ -128,7 +130,7 @@ public class Electric_shop extends Field {
         vacuumCleanerButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveVacumCleaner) {
-                    JOptionPane.showMessageDialog(null, "Már van porszívód!");
+                    JOptionPane.showMessageDialog(null, "You already have a vacuum cleaner!");
                 }
                 if (player.haveHouse && !player.haveVacumCleaner) {
                     player.lostMoney(3000);
@@ -136,8 +138,7 @@ public class Electric_shop extends Field {
                     electricShopFrame.dispose();
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });
@@ -145,7 +146,8 @@ public class Electric_shop extends Field {
         // laptop
         JButton laptopButton = new JButton();
         laptopButton.setText("Laptop");
-        laptopButton.setBounds(90, 290, 200, 40);
+        laptopButton.setBounds(90, 295, 200, 40);
+        laptopButton.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));
         electricShopFrame.add(laptopButton);
         electricShopFrame.setVisible(true);
         laptopButton.setFocusable(false);
@@ -154,7 +156,7 @@ public class Electric_shop extends Field {
         laptopButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (player.haveLaptop) {
-                    JOptionPane.showMessageDialog(null, "Már van laptopod!");
+                    JOptionPane.showMessageDialog(null, "You already have a laptop!");
                 }
                 if (player.haveHouse && !player.haveLaptop) {
                     player.lostMoney(10000);
@@ -163,8 +165,7 @@ public class Electric_shop extends Field {
                     System.out.println(player.haveLaptop);
                 }
                 if (!player.haveHouse) {
-                    JOptionPane.showMessageDialog(null, "Még nincs házad, ezért nem tudsz" +
-                            "itt vásárolni");
+                    JOptionPane.showMessageDialog(null, "You don't have a house, so you can't buy anything here.");
                 }
             }
         });
